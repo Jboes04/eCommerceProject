@@ -30,7 +30,7 @@ class App extends Component {
       <div className="App">
         <div className="mb-5">Nombre de lignes dans le panier: {this.props.basketList.length}</div>
         <Basket/>
-        <ProductDetails />
+        <ProductDetails addToCart={this.handlerAddProductToBasket}/>
       </div>
     );
   }
