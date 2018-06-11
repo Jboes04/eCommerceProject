@@ -51,7 +51,7 @@ function basketReducer(state = initialState, action) {
 
       const newProduct = {};
       newProduct.productId = action.productId;
-      newProduct.label = "label fixe";
+      newProduct.label = action.productTitle;
       newProduct.price = 1;
       newProduct.quantity = 1;
 

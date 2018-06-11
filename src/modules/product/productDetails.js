@@ -26,7 +26,7 @@ export default class ProductDetails extends Component {
   render() {
     return (
       <div>
-        {this.state.categories.map((element) => <li>{element.title}</li>)}
+        {this.state.categories.map((element) => <li key={element.id}><a href="/{element.id}">{element.title}</a> <button id={element.id} title={element.title} onClick={this.props.addToCart}>add to cart</button></li>)}
       </div>
     );
   }

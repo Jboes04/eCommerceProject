@@ -1,7 +1,8 @@
-export function add(_productId) {
+export function add(_productId, _productTitle) {
   return {
     type: "ADD_PRODUCT_TO_BASKET",
     productId: _productId,
+    productTitle: _productTitle,
   }
 }
 

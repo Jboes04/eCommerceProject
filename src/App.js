@@ -18,9 +18,9 @@ class App extends Component {
 
   handlerAddProductToBasket(event) {
     event.preventDefault();
-    //console.log("ici :", event.target.id);
+    //console.log("ici :", event);
 
-    this.props.addProductToBasket(event.target.id);
+    this.props.addProductToBasket(event.target.id, event.target.title);
   }
 
   render() {
@@ -32,7 +32,7 @@ class App extends Component {
 
         <div className="mb-5">Nombre de lignes dans le panier: {this.props.basketList.length}</div>
         <Basket/>
-        <ProductDetails/>
+        <ProductDetails addToCart={this.handlerAddProductToBasket}/>
       </div>
     );
   }
