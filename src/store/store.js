@@ -7,8 +7,8 @@ import basketReducer from './basket/reducer';
 import basketReducerAsup from './basket/reducerAsup';
 
 const store = createStore(
-  //combineReducers({ basketReducer}),
-  basketReducer,
+  combineReducers({ basketReducer, productReducer}),
+  //basketReducer,
   applyMiddleware(thunk, logger));
 
 export default store;
