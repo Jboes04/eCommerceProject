@@ -14,9 +14,14 @@ class BasketProductLine extends Component {
   render() {
     //console.log("RENDER TableTodos", this.props.todoList);
     return (
-      <div className="container">
-        {this.props.product.productId} {this.props.product.label} {this.props.product.price} {this.props.product.quantity}
-      </div>
+      <tr>
+        <td>{this.props.product.productId}</td>
+        <td>{this.props.product.label}</td>
+        <td>{this.props.product.quantity}</td>
+        <td></td>
+        <td>{this.props.product.price}</td>
+        <td>{this.props.product.quantity*this.props.product.price}</td>
+      </tr>
     );
   }
 }

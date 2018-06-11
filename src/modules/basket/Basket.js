@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-//import { connect } from "react-redux";
-//import { getTodoList } from "./../../store/todo/selectors";
+import { connect } from "react-redux";
+
+import { getBasketList } from "./../../store/basket/selectors";
 //import { tableTodosHandler } from "./../../store/todo/handlers";
 
 
@@ -9,11 +10,7 @@ import BasketProductLine from './BasketProductLine';
 class Basket extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      basketList: [
-          { productId: "productid1", label: "label product 1", price: 10.10, quantity: 2},
-          { productId: "productid2", label: "label product 2 beau", price: 9.20, quantity: 1}],
-    };
+
     //this.handleChange = this.handleChange.bind(this);
 
   }
@@ -34,11 +31,12 @@ class Basket extends Component {
             </div>
           :
             <div>
-              <span className="mt-4 mr-5">Récapitulatif de mes achats</span>
+              <span className="mt-4 mr-5">RECAPITULATIF DE MON PANIER</span>
 
               <table className="table table-striped mt-2">
                 <thead>
                   <tr>
+                    <th scope="col">ID</th>
                     <th scope="col">ARTICLE</th>
                     <th scope="col">QUANTITE</th>
                     <th scope="col">SUPPRIMER</th>
@@ -47,7 +45,7 @@ class Basket extends Component {
                   </tr>
                 </thead>
                 <tbody>
-                  {this.state.basketList.map(product => {
+                  {this.props.basketList.map(product => {
                       return (<BasketProductLine
                         key={product.productId}
                         product={product}
@@ -63,6 +61,5 @@ class Basket extends Component {
   }
 }
 
-//const Connected = connect(getTodoList, tableTodosHandler)(TableTodos);
-//export default Connected;
-export default Basket;
+const Connected = connect(getBasketList)(Basket);
+export default Connected;
