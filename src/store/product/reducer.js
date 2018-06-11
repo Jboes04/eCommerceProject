@@ -54,7 +54,7 @@ function filterTodoList(todoList, filterLabel = "") {
 }
 
 
-function todoReducer(state = initialState, action) {
+function productReducer(state = initialState, action) {
   switch (action.type) {
     case "CHECK_TODO":
       return {
