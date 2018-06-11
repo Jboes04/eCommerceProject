@@ -38,6 +38,9 @@ class ProductDetails extends Component {
     );
   }
 }
+<<<<<<< HEAD
 
 const Connected = connect(null, basketHandler)(ProductDetails);
 export default Connected;
+=======
+>>>>>>> lol

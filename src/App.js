@@ -8,6 +8,7 @@ import logo from './logo.svg';
 import './App.css';
 import ProductDetails from './modules/product/productDetails';
 import Basket from './modules/basket/Basket';
+import ProductDetails from "./modules/product/productDetails";
 
 class App extends Component {
   constructor(props) {
