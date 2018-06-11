@@ -8,6 +8,7 @@ import logo from './logo.svg';
 import './App.css';
 
 import Basket from './modules/basket/Basket';
+import ProductDetails from "./modules/product/productDetails";
 
 class App extends Component {
   constructor(props) {
@@ -32,6 +33,7 @@ class App extends Component {
 
         <div className="mb-5">Nombre de lignes dans le panier: {this.props.basketList.length}</div>
         <Basket/>
+        <ProductDetails />
       </div>
     );
   }
