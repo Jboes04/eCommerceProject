@@ -6,7 +6,7 @@ import { basketHandler } from "./store/basket/handlers";
 
 import logo from './logo.svg';
 import './App.css';
-
+import ProductDetails from './modules/product/productDetails';
 import Basket from './modules/basket/Basket';
 
 class App extends Component {
@@ -32,6 +32,7 @@ class App extends Component {
 
         <div className="mb-5">Nombre de lignes dans le panier: {this.props.basketList.length}</div>
         <Basket/>
+        <ProductDetails/>
       </div>
     );
   }
