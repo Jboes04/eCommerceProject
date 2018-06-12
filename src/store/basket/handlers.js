@@ -3,7 +3,7 @@ import { add, remove, mountError } from "./actions";
 
 export function basketHandler(dispatch) {
   return {
-    addProductToBasket: (productId)  => dispatch(add(productId)),
+    addProductToBasket: (productId, productTitle)  => dispatch(add(productId, productTitle)),
     removeProductToBasket: (productId)  => dispatch(remove(productId)),
 	//  loadTodoList: () => dispatch(loadAsync()),
     mountError: (error) => dispatch(mountError()),

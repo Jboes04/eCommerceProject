@@ -41,6 +41,7 @@ function basketReducer(state = initialState, action) {
   switch (action.type) {
 
     case "REMOVE_PRODUCT_TO_BASKET":
+    console.log("plop");
       return {
         ...state,
         todos: deleteProduct(state.todos, action.todoId),
@@ -51,7 +52,7 @@ function basketReducer(state = initialState, action) {
 
       const newProduct = {};
       newProduct.productId = action.productId;
-      newProduct.label = "label fixe";
+      newProduct.label = action.productTitle;
       newProduct.price = 1;
       newProduct.quantity = 1;
 

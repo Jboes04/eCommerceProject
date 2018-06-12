@@ -6,9 +6,8 @@ import { basketHandler } from "./store/basket/handlers";
 
 import logo from './logo.svg';
 import './App.css';
-
+import ProductDetails from './modules/product/productDetails';
 import Basket from './modules/basket/Basket';
-import ProductDetails from "./modules/product/productDetails";
 
 class App extends Component {
   constructor(props) {
@@ -19,9 +18,9 @@ class App extends Component {
 
   handlerAddProductToBasket(event) {
     event.preventDefault();
-    // console.log("ici :", event.target);
+    //console.log("ici :", event);
 
-    this.props.addProductToBasket(event.target.id);
+    this.props.addProductToBasket(event.target.id, event.target.title);
   }
 
   render() {
@@ -33,7 +32,7 @@ class App extends Component {
 
         <div className="mb-5">Nombre de lignes dans le panier: {this.props.basketList.length}</div>
         <Basket/>
-        <ProductDetails addToCart={this.handlerAddProductToBasket}/>
+        <ProductDetails/>
       </div>
     );
   }
