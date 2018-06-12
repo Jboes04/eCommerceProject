@@ -51,6 +51,14 @@ function removeProduct(basketList, _productId) {
   return newBasketList;
 }
 
+function erase(basketList, _productId) {
+  console.log("removeProduct=", _productId);
+  let flag = false;
+
+  const newBasketList = basketList.filter(product => product.productId !== _productId)
+  console.log(newBasketList);
+  return newBasketList;
+};
 
 function basketReducer(state = initialState, action) {
   switch (action.type) {
@@ -60,6 +68,14 @@ function basketReducer(state = initialState, action) {
       return {
         ...state,
         basketList: [...newBasketList],
+      }
+
+    case "DELETE":
+      const newRemove = erase(state.basketList, action.productId);
+      console.log("there : ",newRemove);
+      return {
+        ...state,
+        basketList: [...newRemove],
       }
 
     case "REMOVE_PRODUCT_TO_BASKET":

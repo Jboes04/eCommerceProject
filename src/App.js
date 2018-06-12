@@ -8,7 +8,6 @@ import logo from './logo.svg';
 import './App.css';
 import ProductDetails from './modules/product/productDetails';
 import Basket from './modules/basket/Basket';
-import ProductDetails from "./modules/product/productDetails";
 
 class App extends Component {
   constructor(props) {
@@ -27,11 +26,11 @@ class App extends Component {
   render() {
     // console.log("props app!", this.props);
     return (
-      <div className="App">
-        <div className="mb-5">Nombre de lignes dans le panier: {this.props.basketList.length}</div>
-        <Basket/>
-        <ProductDetails addToCart={this.handlerAddProductToBasket}/>
-      </div>
+        <div className="App">
+          <div className="mb-5">Nombre de lignes dans le panier: {this.props.basketList.length}</div>
+          <Basket/>
+          <ProductDetails addToCart={this.handlerAddProductToBasket}/>
+        </div>
     );
   }
 }

@@ -12,6 +12,13 @@ export function remove(_productId) {
   }
 }
 
+export function erase(_productId){
+  return {
+    type: "DELETE",
+    productId: _productId,
+  }
+}
+
 export function fetching() {
   return {
     type: "FETCHING"
