@@ -25,6 +25,7 @@ class ProductDetails extends Component {
   // fetch(`https://decath-product-api.herokuapp.com/categories/9f8d8840-e22c-496f-b865-f5014710e234/products`)
 
   componentDidMount() {
+
     console.log("categories", this.props.match);
       fetch(`https://decath-product-api.herokuapp.com${this.props.match.url}`)
         .catch((error) => {

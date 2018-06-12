@@ -1,18 +1,25 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
 import { getBasketList } from "./../../store/basket/selectors";
+import { basketHandler } from "./../../store/basket/handlers";
 
 import BasketProductLine from './BasketProductLine';
-import {getTotalAmount} from './basketUtility';
+import {getTotalAmount, containAllInformations} from './basketUtility';
 import {formatAmount} from "./../../util.js";
 
 class Basket extends Component {
-  // constructor(props) {
-  //   super(props);
-  //
-  //   //this.handleChange = this.handleChange.bind(this);
-  //
-  // }
+
+  componentDidMount() {
+    console.log("Basket componentDidMount");
+    this.props.completeBasket(this.props.basketList);
+  }
+
+  componentDidUpdate(prevProps) {
+    console.log("Basket componentDidUpdate");
+    if (!containAllInformations(this.props.basketList)) {
+      this.props.completeBasket(this.props.basketList);
+    }
+  }
 
   render() {
     return (
@@ -47,7 +54,9 @@ class Basket extends Component {
                   }
                 </tbody>
               </table>
+
               <div className="alert alert-primary text-right" style={{backgroundColor:"pink"}}>
+
                 Total panier : {formatAmount(getTotalAmount(this.props.basketList))}
               </div>
             </div>
@@ -57,5 +66,5 @@ class Basket extends Component {
   }
 }
 
-const Connected = connect(getBasketList, null)(Basket);
+const Connected = connect(getBasketList, basketHandler)(Basket);
 export default Connected;

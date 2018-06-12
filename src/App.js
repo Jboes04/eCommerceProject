@@ -11,18 +11,6 @@ import ProductDetails from './modules/product/productDetails';
 import Basket from './modules/basket/Basket';
 
 class App extends Component {
-  constructor(props) {
-    super(props);
-
-    this.handlerAddProductToBasket = this.handlerAddProductToBasket.bind(this);
-  }
-
-  handlerAddProductToBasket(event) {
-    event.preventDefault();
-    //console.log("ici :", event);
-
-    this.props.addProductToBasket(event.target.id, event.target.title);
-  }
 
   getCategories = () => {
     return <Categories />
@@ -33,7 +21,6 @@ class App extends Component {
   }
 
   render() {
-    // console.log("props app!", this.props);
     return (
 
       <div className="App" style={{backgroundColor:"papayawhip"}}>
@@ -50,7 +37,5 @@ class App extends Component {
   }
 }
 
-
-//export default App;
 const Connected = withRouter(connect(getBasketList, basketHandler)(App));
 export default Connected;

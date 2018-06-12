@@ -21,14 +21,14 @@ export function erase(_productId){
 
 export function fetching() {
   return {
-    type: "FETCHING"
+    type: "FETCHING_BASKET"
   }
 }
 
-export function load(_todoList) {
+export function display(_basketList) {
   return {
-    type: "LOAD_TODO_LIST",
-	  todoList: _todoList,
+    type: "DISPLAY_BASKET",
+	  basketList: _basketList,
   }
 }
 

@@ -52,11 +52,9 @@ function removeProduct(basketList, _productId) {
 }
 
 function erase(basketList, _productId) {
-  console.log("removeProduct=", _productId);
-  let flag = false;
-
+  //console.log("removeProduct=", _productId);
   const newBasketList = basketList.filter(product => product.productId !== _productId)
-  console.log(newBasketList);
+  //console.log(newBasketList);
   return newBasketList;
 };
 
@@ -72,7 +70,7 @@ function basketReducer(state = initialState, action) {
 
     case "DELETE":
       const newRemove = erase(state.basketList, action.productId);
-      console.log("there : ",newRemove);
+      //console.log("there : ",newRemove);
       return {
         ...state,
         basketList: [...newRemove],
@@ -85,7 +83,14 @@ function basketReducer(state = initialState, action) {
         basketList: [...newBasketListRemove],
       }
 
-    case "FETCHING":
+    case "DISPLAY_BASKET":
+      return {
+        ...state,
+        fetching: false,
+        basketList: [...action.basketList],
+      }
+
+    case "FETCHING_BASKET":
     return {
       ...state,
       fetching: true,
