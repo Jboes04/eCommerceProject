@@ -1,33 +1,30 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
-//import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 //import { mapStateToProps } from "../../store/product/selectors";
 import { basketHandler } from "../../store/basket/handlers";
-import  ProductVignette  from "./ProductVignette";
-
-//import { checkRemoveHandler } from "./../../store/todo/handlers";
 import './../../App.css';
 
 const fetch = require("node-fetch");
 
-class ProductDetails extends Component {
+class Products extends Component {
   constructor(props) {
-    console.log(props);
+    console.log("Products");
     super(props);
     this.state = {
-      "productdetails": []
+      "products": []
     }
   }
 
   componentDidMount() {
-    console.log("product details", this.props.match);
+    console.log("products", this.props.match);
       fetch(`https://decath-product-api.herokuapp.com${this.props.match.url}`)
         .catch((error) => {
           console.warn(error);
         })
         .then((response) => response.json())
         .then((resp) => {
-          this.setState({"productdetails": resp})
+          this.setState({"products": resp})
           console.log(resp);
         })
   }
@@ -38,15 +35,14 @@ class ProductDetails extends Component {
   }
 
   render() {
-    console.log("blabla",this.state);
     return (
       <div>
-          <li key={this.state.productdetails.id}>{this.state.productdetails.title}<button id={this.state.productdetails.id} onClick={this.handlerAddProductToBasket}>add to cart</button></li>}
-          <h5>{this.state.productdetails.description}</h5>
+        {this.state.products.map((productCurrent) => <ProductVignette product={productCurrent}/>)}
+        {/* {this.state.products.map((element) => <li key={element.id}><Link to={`/products/${element.id}`}>{element.title}</Link> <button id={element.id} onClick={this.handlerAddProductToBasket}>add to cart</button></li>)} */}
       </div>
     );
   }
 }
 
-const Connected = connect(null, basketHandler)(ProductDetails);
+const Connected = connect(null, basketHandler)(Products);
 export default Connected;

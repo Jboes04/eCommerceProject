@@ -53,6 +53,9 @@ function removeProduct(basketList, _productId) {
 
 function erase(basketList, _productId) {
   //console.log("removeProduct=", _productId);
+  //let flag = false;
+
+
   const newBasketList = basketList.filter(product => product.productId !== _productId)
   //console.log(newBasketList);
   return newBasketList;
