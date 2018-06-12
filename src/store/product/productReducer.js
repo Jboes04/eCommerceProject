@@ -4,6 +4,7 @@ import {tableTodosHandler, checkRemoveHandler} from "./handlers"
 const fetch = require("node-fetch");
 
 function productReducer(state, action) {
+  
 //   switch (action.type) {
 //     case "CHECK_TODO":
 //       return {

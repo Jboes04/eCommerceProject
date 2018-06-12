@@ -24,7 +24,7 @@ class App extends Component {
   }
 
   render() {
-    console.log("props app!", this.props);
+    // console.log("props app!", this.props);
     return (
       <div className="App">
         <button id="155" onClick={this.handlerAddProductToBasket}>add product 155</button>
@@ -32,7 +32,7 @@ class App extends Component {
 
         <div className="mb-5">Nombre de lignes dans le panier: {this.props.basketList.length}</div>
         <Basket/>
-        <ProductDetails addToCart={this.handlerAddProductToBasket}/> 
+        <ProductDetails />
       </div>
     );
   }
