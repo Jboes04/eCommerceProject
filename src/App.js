@@ -7,7 +7,7 @@ import { basketHandler } from "./store/basket/handlers";
 
 import './App.css';
 import Categories from './modules/product/Categories';
-import ProductDetails from './modules/product/ProductDetails';
+import ProductDetails from './modules/product/productDetails';
 import Basket from './modules/basket/Basket';
 
 class App extends Component {
