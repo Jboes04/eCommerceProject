@@ -1,72 +1,58 @@
-import _ from 'underscore';
-
 const initialState = {
   basketList: [
-      { productId: "productid1", label: "label state REDUX product 1", price: 10.10, quantity: 2},
-      { productId: "productid2", label: "label product 2 beau", price: 9.20, quantity: 1}],
+      { productId: "c32af335-9b5c-4fb6-b64e-14198af25055", label: "PALMES WADERS", price: 10.10, quantity: 2},
+      { productId: "82830e66-b439-4fef-ade8-abb4dce54e6e", label: "Corne chasse 14cm", price: 9.20, quantity: 1}],
   fetching: false,
   error: "No error",
 };
 
 
-function deleteProduct(todoList, todoId) {
-  //console.log("deleteTodo debut", todoId);
-  const todoModified = _.reject(todoList, function(todo){ return todo.id === todoId; });
-  return todoModified;
-}
+function addProduct(basketList, _productId) {
+  console.log("addProduct=", _productId);
 
-function sortTodoList(todoList, sortedBy, sortedDesc = false) {
-  const todosSorted = _.sortBy(todoList, sortedBy);
-  return sortedDesc ? todosSorted.reverse() : todosSorted;
-}
+  let productAlreadyInBasket = false;
 
-function filterTodoList(todoList, filterLabel = "") {
-  return todoList.map(todo => {
-    if (filterLabel === "" || todo.label.toLowerCase().includes(filterLabel)) {
-      return {
-        ...todo,
-        hidden: false,
-      }
+  const newBasketList = basketList.map(product => {
+    if (product.productId === _productId) {
+      productAlreadyInBasket = true;
+      return {...product, quantity: product.quantity + 1 };
     } else {
-      return {
-        ...todo,
-        hidden: true,
-      }
+      return {...product};
     }
-  })
+  });
+
+  if (!productAlreadyInBasket) {
+    newBasketList.push( {
+      productId: _productId,
+      quantity: 1
+    })
+  }
+
+  return newBasketList;
+}
+
+
+function removeProduct(todoList, todoId) {
+  //console.log("deleteTodo debut", todoId);
+  const todoModified = null;//_.reject(todoList, function(todo){ return todo.id === todoId; });
+  return todoModified;
 }
 
 
 function basketReducer(state = initialState, action) {
   switch (action.type) {
 
+    case "ADD_PRODUCT_TO_BASKET":
+      const newBasketList = addProduct(state.basketList, action.productId);
+      return {
+        ...state,
+        basketList: [...newBasketList],
+      }
+
     case "REMOVE_PRODUCT_TO_BASKET":
       return {
         ...state,
-        todos: deleteProduct(state.todos, action.todoId),
-      }
-
-    case "ADD_PRODUCT_TO_BASKET":
-    //{ productId: "productid1", label: "label product 1", price: 10.10, quantity: 2},
-
-      const newProduct = {};
-      newProduct.productId = action.productId;
-      newProduct.label = action.productTitle;
-      newProduct.price = 1;
-      newProduct.quantity = 1;
-
-      return {
-        ...state,
-        basketList: [...state.basketList, newProduct],
-      }
-
-    case "LOAD_TODO_LIST":
-      const newTodoListLoad = filterTodoList(action.todoList);
-      return {
-        ...state,
-        todos: newTodoListLoad,
-        fetching: false,
-        filterLabel: "",
+        todos: removeProduct(state.todos, action.todoId),
       }
 
     case "FETCHING":
