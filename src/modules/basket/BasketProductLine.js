@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-//import { connect } from "react-redux";
+import { connect } from "react-redux";
 //import { getTodoList } from "./../../store/todo/selectors";
-//import { tableTodosHandler } from "./../../store/todo/handlers";
+import { basketHandler } from "./../../store/basket/handlers";
 
 
 
@@ -17,7 +17,11 @@ class BasketProductLine extends Component {
       <tr>
         <td>{this.props.product.productId}</td>
         <td>{this.props.product.label}</td>
-        <td>{this.props.product.quantity}</td>
+        <td>
+          <span>{this.props.product.quantity}</span>
+          <button onClick={() => this.props.addProductToBasket(this.props.product.productId)}>+</button>
+          <button onClick={() => this.props.removeProductToBasket(this.props.product.productId)}>-</button>
+        </td>
         <td></td>
         <td>{this.props.product.price}</td>
         <td>{this.props.product.quantity*this.props.product.price}</td>
@@ -26,6 +30,5 @@ class BasketProductLine extends Component {
   }
 }
 
-//const Connected = connect(getTodoList, tableTodosHandler)(TableTodos);
-//export default Connected;
-export default BasketProductLine;
+const Connected = connect(null, basketHandler)(BasketProductLine);
+export default Connected;
