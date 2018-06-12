@@ -1,6 +1,5 @@
-export function completeDisplay(products) {
-  return products.map((product) => {
-    product.image_path = "https://www.decathlon.fr/media/" + product.image_path;
+export default function completeDisplay(products) {
+    let product = "https://www.decathlon.fr/media/" + products.image_path;
+    console.log("this is product path : ", product);
     return product;
-  });
-} 
+}

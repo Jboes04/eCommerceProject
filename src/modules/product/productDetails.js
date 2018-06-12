@@ -4,6 +4,9 @@ import { Link, withRouter } from 'react-router-dom';
 
 //import { mapStateToProps } from "../../store/product/selectors";
 import { basketHandler } from "../../store/basket/handlers";
+import  ProductVignette  from "./ProductVignette";
+
+//import { checkRemoveHandler } from "./../../store/todo/handlers";
 import './../../App.css';
 
 const fetch = require("node-fetch");
@@ -34,15 +37,10 @@ class ProductDetails extends Component {
         })
   }
 
-  handlerAddProductToBasket = (event) => {
-    event.preventDefault();
-    this.props.addProductToBasket(event.target.id);
-  }
-
   render() {
     return (
       <div>
-        {this.state.products.map((element) => <li key={element.id}><Link to={`/${element.id}`}>{element.title}</Link> <button id={element.id} onClick={this.handlerAddProductToBasket}>add to cart</button></li>)}
+        {this.state.categories.map((productCurrent) => <ProductVignette product={productCurrent}/>)}
       </div>
     );
   }
