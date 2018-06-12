@@ -3,4 +3,4 @@ export function completeDisplay(products) {
     product.image_path = "https://www.decathlon.fr/media/" + product.image_path;
     return product;
   });
-}
+} l
