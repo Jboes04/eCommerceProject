@@ -17,11 +17,11 @@ class Basket extends Component {
 
         {this.props.fetching
           ? <div>
-              <span className="mt-4 mb-4">LOADING IN PROGRESS</span>
+              <span className="mt-4 mb-4" >LOADING IN PROGRESS</span>
             </div>
           :
             <div>
-              <div className="alert-primary pt-3 pb-3">RECAPITULATIF DE MON PANIER</div>
+              <h1 className="alert-primary pt-3 pb-3 pink" style={{backgroundColor:"pink"}}>RECAPITULATIF DE MON PANIER</h1>
 
               <table className="table table-striped">
                 <thead>
@@ -44,7 +44,7 @@ class Basket extends Component {
                   }
                 </tbody>
               </table>
-              <div class="alert alert-primary text-right">
+              <div className="alert alert-primary text-right" style={{backgroundColor:"pink"}}>
                 Total panier : {formatAmount(getTotalAmount(this.props.basketList))}
               </div>
             </div>

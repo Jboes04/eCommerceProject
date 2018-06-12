@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
-
+import url from 'url'
 import { getBasketList } from "./store/basket/selectors";
 import { basketHandler } from "./store/basket/handlers";
 
@@ -26,11 +26,13 @@ class App extends Component {
   render() {
     // console.log("props app!", this.props);
     return (
-        <div className="App">
+      <div className="App" style={{backgroundColor:"papayawhip"}}>
+        <div className="url(../img/ui/shadow.png) center repeat-x" style={{backgroundSize: "auto 100%"}}>
           <div className="mb-5">Nombre de lignes dans le panier: {this.props.basketList.length}</div>
           <Basket/>
           <ProductDetails addToCart={this.handlerAddProductToBasket}/>
         </div>
+      </div>
     );
   }
 }
