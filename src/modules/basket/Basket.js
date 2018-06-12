@@ -7,18 +7,9 @@ import BasketProductLine from './BasketProductLine';
 class Basket extends Component {
   constructor(props) {
     super(props);
-
-    //this.handleChange = this.handleChange.bind(this);
-
   }
 
-  // handleChange(event) {
-  //   this.setState({basketList: this.capitalize(event.target.value)});
-  // }
-
-
   render() {
-    //console.log("RENDER TableTodos", this.props.todoList);
     return (
       <div className="container">
 
