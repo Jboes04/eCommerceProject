@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
 import url from 'url'
+import { Route, withRouter } from 'react-router-dom';
 import { getBasketList } from "./store/basket/selectors";
 import { basketHandler } from "./store/basket/handlers";
 
-import logo from './logo.svg';
 import './App.css';
-import ProductDetails from './modules/product/productDetails';
+import Categories from './modules/product/Categories';
+import ProductDetails from './modules/product/ProductDetails';
 import Basket from './modules/basket/Basket';
 
 class App extends Component {
@@ -23,15 +24,27 @@ class App extends Component {
     this.props.addProductToBasket(event.target.id, event.target.title);
   }
 
+  getCategories = () => {
+    return <Categories />
+  }
+
+  getProducts = (routerProps) => {
+    return <ProductDetails {...routerProps} />
+  }
+
   render() {
     // console.log("props app!", this.props);
     return (
+
       <div className="App" style={{backgroundColor:"papayawhip"}}>
         <div className="url(../img/ui/shadow.png) center repeat-x" style={{backgroundSize: "auto 100%"}}>
           <div className="mb-5">Nombre de lignes dans le panier: {this.props.basketList.length}</div>
-          <Basket/>
-          <ProductDetails addToCart={this.handlerAddProductToBasket}/>
-        </div>
+
+        <Basket />
+        <Route exact path="/" render={this.getCategories}/>
+        <Route path="/categories/:categoryId/products" render={this.getProducts}/>
+
+      </div>
       </div>
     );
   }
@@ -39,5 +52,5 @@ class App extends Component {
 
 
 //export default App;
-const Connected = connect(getBasketList, basketHandler)(App);
+const Connected = withRouter(connect(getBasketList, basketHandler)(App));
 export default Connected;

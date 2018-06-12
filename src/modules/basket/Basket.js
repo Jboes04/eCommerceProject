@@ -7,9 +7,12 @@ import {getTotalAmount} from './basketUtility';
 import {formatAmount} from "./../../util.js";
 
 class Basket extends Component {
-  constructor(props) {
-    super(props);
-  }
+  // constructor(props) {
+  //   super(props);
+  //
+  //   //this.handleChange = this.handleChange.bind(this);
+  //
+  // }
 
   render() {
     return (
