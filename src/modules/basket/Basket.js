@@ -3,6 +3,8 @@ import { connect } from "react-redux";
 import { getBasketList } from "./../../store/basket/selectors";
 
 import BasketProductLine from './BasketProductLine';
+import {getTotalAmount} from './basketUtility';
+import {formatAmount} from "./../../util.js";
 
 class Basket extends Component {
   constructor(props) {
@@ -19,9 +21,9 @@ class Basket extends Component {
             </div>
           :
             <div>
-              <h5 className="mt-4 mr-5">RECAPITULATIF DE MON PANIER</h5>
+              <div className="alert-primary pt-3 pb-3">RECAPITULATIF DE MON PANIER</div>
 
-              <table className="table table-striped mt-2">
+              <table className="table table-striped">
                 <thead>
                   <tr>
                     <th scope="col">ID</th>
@@ -42,6 +44,9 @@ class Basket extends Component {
                   }
                 </tbody>
               </table>
+              <div class="alert alert-primary text-right">
+                Total panier : {formatAmount(getTotalAmount(this.props.basketList))}
+              </div>
             </div>
         }
       </div>
