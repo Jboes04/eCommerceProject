@@ -25,7 +25,7 @@ class Basket extends Component {
     return (
       <div className="container">
 
-        {this.props.fetching
+        {this.props.fetching22
           ? <div>
               <span className="mt-4 mb-4" >LOADING IN PROGRESS</span>
             </div>

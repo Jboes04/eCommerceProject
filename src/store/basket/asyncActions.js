@@ -13,9 +13,7 @@ export function completeBasketAsync(basketList) {
         return getProductDetail(productFromBasket.productId)
           .then(productDetail => {
             //console.log("productDetail=", productDetail);
-            productFromBasket.label = productDetail.title;
-            productFromBasket.price = productDetail.min_price;
-            return productFromBasket;
+            return {...productFromBasket, label: productDetail.title, price: productDetail.min_price} ;
           });
       } else {
         return productFromBasket;
