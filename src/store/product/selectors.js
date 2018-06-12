@@ -1,5 +1,5 @@
-export function getTodoList(reduxState) {
+export function mapStateToProps(reduxState) {
   return {
-    todoList: reduxState.todos,
+    getBasket: reduxState.productReducer.basketList,
   }
 }

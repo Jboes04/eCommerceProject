@@ -1,8 +1,7 @@
-import { add } from "./actions";
-import { resetAsync, loadAsync } from "./asyncActions";
+import { add } from "./../basket/actions";
 
-export function tableTodosHandler(dispatch) {
+export function checkRemoveHandler(dispatch) {
   return {
-    AddToBasket: (todoLabel)  => dispatch(add(todoLabel))
+    addProductToBasket: (productId, productTitle)  => dispatch(add(productId, productTitle)),
   }
 }

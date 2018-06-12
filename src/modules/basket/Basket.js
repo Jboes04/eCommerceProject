@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
-
 import { getBasketList } from "./../../store/basket/selectors";
-//import { tableTodosHandler } from "./../../store/todo/handlers";
-
 
 import BasketProductLine from './BasketProductLine';
 
@@ -61,5 +58,5 @@ class Basket extends Component {
   }
 }
 
-const Connected = connect(getBasketList)(Basket);
+const Connected = connect(getBasketList, null)(Basket);
 export default Connected;
