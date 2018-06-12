@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
+import { Link } from 'react-router-dom';
 //import { mapStateToProps } from "../../store/product/selectors";
 import { basketHandler } from "../../store/basket/handlers";
 import completeDisplay from "./productUtility";
@@ -25,7 +26,7 @@ class ProductVignette extends Component {
 
         <div key={this.props.product.id}>
           <div class="col-12 col-md-6">
-            <h3 href="/{this.props.product.id}">{this.props.product.title}</h3>
+            <h3><Link to={`/products/${this.props.product.id}`}>{this.props.product.title}</Link></h3>
           </div>
             <h6 key={this.props.product.description}>
             <button id={this.props.product.id} title={this.props.product.title} onClick={this.handlerAddProductToBasket}>add to cart</button>
