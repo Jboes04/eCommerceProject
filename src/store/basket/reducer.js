@@ -32,10 +32,22 @@ function addProduct(basketList, _productId) {
 }
 
 
-function removeProduct(todoList, todoId) {
-  //console.log("deleteTodo debut", todoId);
-  const todoModified = null;//_.reject(todoList, function(todo){ return todo.id === todoId; });
-  return todoModified;
+function removeProduct(basketList, _productId) {
+  console.log("removeProduct=", _productId);
+
+    const newBasketList = basketList.map(product => {
+    if (product.productId === _productId) {
+      let newQuantity = product.quantity;
+      if (newQuantity > 1) {
+        newQuantity -= 1;
+      }
+      return {...product, quantity: newQuantity };
+    } else {
+      return {...product};
+    }
+  });
+
+  return newBasketList;
 }
 
 
@@ -50,9 +62,10 @@ function basketReducer(state = initialState, action) {
       }
 
     case "REMOVE_PRODUCT_TO_BASKET":
+      const newBasketListRemove = removeProduct(state.basketList, action.productId);
       return {
         ...state,
-        todos: removeProduct(state.todos, action.todoId),
+        basketList: [...newBasketListRemove],
       }
 
     case "FETCHING":
