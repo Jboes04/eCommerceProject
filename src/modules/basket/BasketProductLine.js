@@ -8,7 +8,6 @@ import { basketHandler } from "./../../store/basket/handlers";
 class BasketProductLine extends Component {
   constructor(props) {
     super(props);
-    //{ productId: "productid1", label: "label product 1", price: 10.10, quantity: 2},
   }
 
   render() {
@@ -18,9 +17,9 @@ class BasketProductLine extends Component {
         <td>{this.props.product.productId}</td>
         <td>{this.props.product.label}</td>
         <td>
-          <span>{this.props.product.quantity}</span>
+          <span className="mr-2">{this.props.product.quantity}</span>
+          <button className="mr-1" onClick={() => this.props.removeProductToBasket(this.props.product.productId)}>-</button>
           <button onClick={() => this.props.addProductToBasket(this.props.product.productId)}>+</button>
-          <button onClick={() => this.props.removeProductToBasket(this.props.product.productId)}>-</button>
         </td>
         <td></td>
         <td>{this.props.product.price}</td>
