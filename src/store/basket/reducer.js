@@ -24,7 +24,8 @@ function addProduct(basketList, _productId) {
   if (!productAlreadyInBasket) {
     newBasketList.push( {
       productId: _productId,
-      quantity: 1
+      quantity: 1,
+      price: 0,
     })
   }
 

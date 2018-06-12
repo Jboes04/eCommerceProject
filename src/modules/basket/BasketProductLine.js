@@ -3,6 +3,8 @@ import { connect } from "react-redux";
 //import { getTodoList } from "./../../store/todo/selectors";
 import { basketHandler } from "./../../store/basket/handlers";
 
+import {formatAmount} from "./../../util.js";
+
 
 
 class BasketProductLine extends Component {
@@ -22,8 +24,8 @@ class BasketProductLine extends Component {
           <button onClick={() => this.props.addProductToBasket(this.props.product.productId)}>+</button>
         </td>
         <td></td>
-        <td>{this.props.product.price}</td>
-        <td>{this.props.product.quantity*this.props.product.price}</td>
+        <td>{formatAmount(this.props.product.price)}</td>
+        <td>{formatAmount(this.props.product.quantity*this.props.product.price)}</td>
       </tr>
     );
   }

@@ -28,7 +28,7 @@ class Basket extends Component {
             </div>
           :
             <div>
-              <span className="mt-4 mr-5">RECAPITULATIF DE MON PANIER</span>
+              <h5 className="mt-4 mr-5">RECAPITULATIF DE MON PANIER</h5>
 
               <table className="table table-striped mt-2">
                 <thead>

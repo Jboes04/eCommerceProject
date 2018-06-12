@@ -27,9 +27,6 @@ class App extends Component {
     // console.log("props app!", this.props);
     return (
       <div className="App">
-        <button id="155" onClick={this.handlerAddProductToBasket}>add product 155</button>
-        <button id="1240" onClick={this.handlerAddProductToBasket}>add product 1240</button>
-
         <div className="mb-5">Nombre de lignes dans le panier: {this.props.basketList.length}</div>
         <Basket/>
         <ProductDetails />
