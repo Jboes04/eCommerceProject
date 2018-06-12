@@ -23,7 +23,7 @@ class BasketProductLine extends Component {
           <button className="mr-1" onClick={() => this.props.removeProductToBasket(this.props.product.productId)}>-</button>
           <button onClick={() => this.props.addProductToBasket(this.props.product.productId)}>+</button>
         </td>
-        <td></td>
+        <td><button onClick={() => this.props.deleteProductToBasket(this.props.product.productId)}>🗑️</button></td>
         <td>{formatAmount(this.props.product.price)}</td>
         <td>{formatAmount(this.props.product.quantity*this.props.product.price)}</td>
       </tr>

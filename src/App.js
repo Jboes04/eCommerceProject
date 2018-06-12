@@ -26,11 +26,11 @@ class App extends Component {
   render() {
     // console.log("props app!", this.props);
     return (
-      <div className="App">
-        <div className="mb-5">Nombre de lignes dans le panier: {this.props.basketList.length}</div>
-        <Basket/>
-        <ProductDetails />
-      </div>
+        <div className="App">
+          <div className="mb-5">Nombre de lignes dans le panier: {this.props.basketList.length}</div>
+          <Basket/>
+          <ProductDetails addToCart={this.handlerAddProductToBasket}/>
+        </div>
     );
   }
 }
