@@ -6,13 +6,9 @@ import './App.css';
 import { getBasketList } from "./store/basket/selectors";
 import { basketHandler } from "./store/basket/handlers";
 import Categories from './modules/product/Categories';
-import Products from './modules/product/Products';
 import ProductDetails from './modules/product/productDetails';
-import Basket from './modules/basket/Basket';
 import Navbar from './modules/basket/Navbar';
 import ProductList from './modules/product/ProductList';
-
-
 
 class App extends Component {
 
