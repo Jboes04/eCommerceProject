@@ -41,7 +41,7 @@ class ProductDetails extends Component {
     console.log("blabla",this.state);
     return (
       <div>
-          <li key={this.state.productdetails.id}>{this.state.productdetails.title}<button id={this.state.productdetails.id} onClick={this.handlerAddProductToBasket}>add to cart</button></li>}
+          <li key={this.state.productdetails.id}>{this.state.productdetails.title}<button id={this.state.productdetails.id} onClick={this.handlerAddProductToBasket}>add to cart</button></li>
           <h5>{this.state.productdetails.description}</h5>
       </div>
     );
