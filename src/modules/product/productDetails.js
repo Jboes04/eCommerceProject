@@ -1,12 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
-//import { Link } from 'react-router-dom';
-//import { mapStateToProps } from "../../store/product/selectors";
-import { basketHandler } from "../../store/basket/handlers";
-import  ProductVignette  from "./ProductVignette";
-
-//import { checkRemoveHandler } from "./../../store/todo/handlers";
 import './../../App.css';
+
+import { basketHandler } from "../../store/basket/handlers";
 
 const fetch = require("node-fetch");
 

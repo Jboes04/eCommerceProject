@@ -5,8 +5,6 @@ import { Link } from 'react-router-dom';
 import { basketHandler } from "../../store/basket/handlers";
 import './../../App.css';
 
-const fetch = require("node-fetch");
-
 class Categories extends Component {
   constructor(props) {
     super(props);

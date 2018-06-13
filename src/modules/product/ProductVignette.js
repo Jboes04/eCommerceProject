@@ -6,9 +6,9 @@ import { basketHandler } from "../../store/basket/handlers";
 import completeDisplay from "./productUtility";
 
 class ProductVignette extends Component {
-  constructor(props) {
-    super(props);
-  }
+  // constructor(props) {
+  //   super(props);
+  // }
 
   handlerAddProductToBasket = (event) => {
     event.preventDefault();
