@@ -16,7 +16,7 @@ class ProductDetails extends Component {
   }
 
   componentDidMount() {
-    console.log("product details", this.props.match);
+    //console.log("product details", this.props.match);
       fetch(`https://decath-product-api.herokuapp.com${this.props.match.url}`)
         .catch((error) => {
           console.warn(error);
@@ -26,6 +26,12 @@ class ProductDetails extends Component {
           this.setState({"productdetails": resp})
           console.log(resp);
         })
+  }
+
+  componentDidUpdate(prevProps) {
+    if(prevProps.match.url !== this.props.match.url) {
+      this.componentDidMount();
+    }
   }
 
   handlerAddProductToBasket = (event) => {
