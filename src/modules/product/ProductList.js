@@ -12,6 +12,8 @@ import React, { Component } from 'react';
 import { connect } from "react-redux";
 import { basketHandler } from "../../store/basket/handlers";
 import { Link } from 'react-router-dom';
+import {formatAmount} from "./../../util.js";
+
 
 //import tileData from './tileData';
 
@@ -82,7 +84,7 @@ render() {
             <img src={completeDisplay(product)} alt={product.title} />
             <GridListTileBar
               title={<Link to={`/products/${product.id}`}>{product.title}</Link>}
-              subtitle={<span><h5>{product.min_price}€</h5></span>}
+              subtitle={<span><h5>{formatAmount(product.min_price)}</h5></span>}
               actionIcon={
                 <IconButton className={classes.icon} onClick={() => this.handlerAddProductToBasket(product.id)}>
                   <i class="material-icons" >add_shopping_cart</i>
