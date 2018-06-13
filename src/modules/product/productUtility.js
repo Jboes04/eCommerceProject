@@ -11,3 +11,17 @@ export function getProductDetail(productId) {
     })
   .then((response) => response.json())
 }
+
+export function addProductToHistory(productsHistory, productToAdd) {
+	if (productsHistory.last) {
+		if (!productsHistory.toDisplay.some(product => product.id === productsHistory.last.id)) {
+			productsHistory.toDisplay.unshift(productsHistory.last);
+		}
+	}
+	productsHistory.last = productToAdd;
+
+	if (productsHistory.toDisplay.length > 6) {
+		productsHistory.toDisplay.pop();
+	}
+	return productsHistory;
+}
