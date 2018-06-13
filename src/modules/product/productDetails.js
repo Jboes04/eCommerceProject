@@ -38,7 +38,6 @@ class ProductDetails extends Component {
   }
 
   render() {
-    console.log("blabla",this.state);
     return (
       <div>
           <li key={this.state.productdetails.id}>{this.state.productdetails.title}<button id={this.state.productdetails.id} onClick={this.handlerAddProductToBasket}>add to cart</button></li>

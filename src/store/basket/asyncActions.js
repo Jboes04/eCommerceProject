@@ -1,4 +1,4 @@
-import {fetching, display, mountError } from "./actions";
+import {fetching, display } from "./actions";
 
 import {getProductDetail} from './../../modules/product/productUtility';
 import {containAllInformations} from './../../modules/basket/basketUtility';
