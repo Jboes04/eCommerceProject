@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
+import { Link } from 'react-router-dom';
+
 import { basketHandler } from "./../../store/basket/handlers";
 
 import {formatAmount} from "./../../util.js";
@@ -7,18 +9,22 @@ import {formatAmount} from "./../../util.js";
 
 class BasketProductLine extends Component {
 
-  // constructor(props) {
-  //   super(props);
-  //   //{ productId: "productid1", label: "label product 1", price: 10.10, quantity: 2},
-  // }
-
+  //{ productId: "productid1", label: "label product 1", price: 10.10, quantity: 2, url: "http..."},
 
   render() {
-    //console.log("RENDER TableTodos", this.props.todoList);
     return (
       <tr>
         <td className="d-none">{this.props.product.productId}</td>
-        <td>{this.props.product.label}</td>
+        <td>
+          <Link to={`/products/${this.props.product.productId}`}>
+            <img style={{width:60,height:60}} src={this.props.product.url} alt={this.props.product.label} />
+          </Link>
+        </td>
+        <td>
+          <Link to={`/products/${this.props.product.productId}`}>
+            <span className="ml-2">{this.props.product.label}</span>
+          </Link>
+        </td>
         <td>
           <span className="mr-2">{this.props.product.quantity}</span>
           <button className="mr-1" onClick={() => this.props.removeProductToBasket(this.props.product.productId)}>-</button>

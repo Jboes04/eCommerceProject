@@ -38,7 +38,7 @@ class Basket extends Component {
                 <thead>
                   <tr>
                     <th className="d-none" scope="col">ID</th>
-                    <th scope="col">ARTICLE</th>
+                    <th scope="col" colSpan="2">ARTICLE</th>
                     <th scope="col">QUANTITE</th>
                     <th scope="col">SUPPRIMER</th>
                     <th scope="col">PRIX UNITAIRE</th>

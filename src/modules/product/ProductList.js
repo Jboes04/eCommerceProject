@@ -7,7 +7,7 @@ import GridListTileBar from '@material-ui/core/GridListTileBar';
 import ListSubheader from '@material-ui/core/ListSubheader';
 import IconButton from '@material-ui/core/IconButton';
 import InfoIcon from '@material-ui/icons/Info';
-import completeDisplay from "./productUtility";
+import { completeDisplay } from "./productUtility";
 import React, { Component } from 'react';
 import { connect } from "react-redux";
 import { basketHandler } from "../../store/basket/handlers";
