@@ -17,7 +17,10 @@ class Basket extends Component {
   componentDidUpdate(prevProps) {
     console.log("Basket componentDidUpdate");
     if (!containAllInformations(this.props.basketList)) {
+      console.log("Basket containAllInformations NOT");
       this.props.completeBasket(this.props.basketList);
+    } else {
+      console.log("Basket containAllInformations YES");
     }
   }
 
@@ -25,7 +28,7 @@ class Basket extends Component {
     return (
       <div className="container">
 
-        {this.props.fetching22
+        {this.props.fetching
           ? <div>
               <span className="mt-4 mb-4" >LOADING IN PROGRESS</span>
             </div>
