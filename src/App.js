@@ -10,6 +10,8 @@ import Products from './modules/product/Products';
 import ProductDetails from './modules/product/productDetails';
 import Basket from './modules/basket/Basket';
 
+
+
 class App extends Component {
 
   getCategories = () => {
@@ -30,6 +32,11 @@ class App extends Component {
       <div className="App" style={{backgroundColor:"papayawhip"}}>
         <div className="url(../img/ui/shadow.png) center repeat-x" style={{backgroundSize: "auto 100%"}}>
           <div className="mb-5">Nombre de lignes dans le panier: {this.props.basketList.length}</div>
+          <div
+            className="g-signin2"
+            data-onsuccess="googleConnectCallback"
+            data-theme="dark"
+          />
 
         <Basket />
         <Route exact path="/" render={this.getCategories}/>
