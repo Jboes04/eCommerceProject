@@ -9,6 +9,8 @@ import Categories from './modules/product/Categories';
 import Products from './modules/product/Products';
 import ProductDetails from './modules/product/productDetails';
 import Basket from './modules/basket/Basket';
+import Navbar from './modules/basket/Navbar';
+import ProductList from './modules/product/ProductList';
 
 
 
@@ -19,7 +21,7 @@ class App extends Component {
   }
 
   getProducts = (routerProps) => {
-    return <Products {...routerProps} />
+    return <ProductList {...routerProps} />
   }
 
   getProductDetails = (routerProps) => {
@@ -30,19 +32,17 @@ class App extends Component {
     return (
 
       <div className="App" style={{backgroundColor:"papayawhip"}}>
-        <div className="url(../img/ui/shadow.png) center repeat-x" style={{backgroundSize: "auto 100%"}}>
-          <div className="mb-5">Nombre de lignes dans le panier: {this.props.basketList.length}</div>
+        <Navbar />
           <div
             className="g-signin2"
             data-onsuccess="googleConnectCallback"
             data-theme="dark"
           />
-
-        <Basket />
         <Route exact path="/" render={this.getCategories}/>
         <Route path="/categories/:categoryId/products" render={this.getProducts}/>
         <Route path="/products/:productId" render={this.getProductDetails}/>
-      </div>
+
+      {/* </div> */}
       </div>
     );
   }

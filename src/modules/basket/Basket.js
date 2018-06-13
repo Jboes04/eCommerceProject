@@ -34,12 +34,10 @@ class Basket extends Component {
             </div>
           :
             <div>
-              <h1 className="alert-primary pt-3 pb-3 pink" style={{backgroundColor:"pink"}}>RECAPITULATIF DE MON PANIER</h1>
-
               <table className="table table-striped">
                 <thead>
                   <tr>
-                    <th scope="col">ID</th>
+                    <th className="d-none" scope="col">ID</th>
                     <th scope="col">ARTICLE</th>
                     <th scope="col">QUANTITE</th>
                     <th scope="col">SUPPRIMER</th>
@@ -57,9 +55,7 @@ class Basket extends Component {
                   }
                 </tbody>
               </table>
-
-              <div className="alert alert-primary text-right" style={{backgroundColor:"pink"}}>
-
+              <div className="alert bg-primary text-right text-white">
                 Total panier : {formatAmount(getTotalAmount(this.props.basketList))}
               </div>
             </div>
