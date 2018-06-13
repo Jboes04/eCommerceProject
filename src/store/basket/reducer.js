@@ -1,11 +1,11 @@
+import {saveBasketListInLocalStorage, getBasketListFromLocalStorage} from './../../modules/basket/basketUtility';
+
 const initialState = {
-  basketList: [
-      { productId: "c32af335-9b5c-4fb6-b64e-14198af25055", quantity: 2},
-      { productId: "82830e66-b439-4fef-ade8-abb4dce54e6e", label: "Corne chasse 14cm", price: 9.20, quantity: 1}],
+  basketList: getBasketListFromLocalStorage(),
   fetching: false,
   error: "No error",
+  temp: getBasketListFromLocalStorage(),
 };
-
 
 function addProduct(basketList, _productId) {
   console.log("addProduct=", _productId);
@@ -29,6 +29,7 @@ function addProduct(basketList, _productId) {
     })
   }
 
+  saveBasketListInLocalStorage(newBasketList);
   return newBasketList;
 }
 
@@ -48,16 +49,15 @@ function removeProduct(basketList, _productId) {
     }
   });
 
+  saveBasketListInLocalStorage(newBasketList);
   return newBasketList;
 }
 
-function erase(basketList, _productId) {
-  //console.log("removeProduct=", _productId);
-  //let flag = false;
-
-
+function eraseProduct(basketList, _productId) {
+  //console.log("eraseProduct=", _productId);
   const newBasketList = basketList.filter(product => product.productId !== _productId)
-  //console.log(newBasketList);
+
+  saveBasketListInLocalStorage(newBasketList);
   return newBasketList;
 };
 
@@ -71,9 +71,8 @@ function basketReducer(state = initialState, action) {
         basketList: [...newBasketList],
       }
 
-    case "DELETE":
-      const newRemove = erase(state.basketList, action.productId);
-      //console.log("there : ",newRemove);
+    case "DELETE_PRODUCT_TO_BASKET":
+      const newRemove = eraseProduct(state.basketList, action.productId);
       return {
         ...state,
         basketList: [...newRemove],
@@ -91,6 +90,12 @@ function basketReducer(state = initialState, action) {
         ...state,
         fetching: false,
         basketList: [...action.basketList],
+      }
+
+    case "LOAD_BASKET_FROM_STORE":
+      return {
+        ...state,
+        basketList: [...getBasketListFromLocalStorage()],
       }
 
     case "FETCHING_BASKET":

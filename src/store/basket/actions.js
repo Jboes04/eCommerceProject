@@ -14,7 +14,7 @@ export function remove(_productId) {
 
 export function erase(_productId){
   return {
-    type: "DELETE",
+    type: "DELETE_PRODUCT_TO_BASKET",
     productId: _productId,
   }
 }

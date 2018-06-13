@@ -10,17 +10,17 @@ import {formatAmount} from "./../../util.js";
 class Basket extends Component {
 
   componentDidMount() {
-    console.log("Basket componentDidMount");
+    //console.log("Basket componentDidMount");
     this.props.completeBasket(this.props.basketList);
   }
 
   componentDidUpdate(prevProps) {
-    console.log("Basket componentDidUpdate");
+    //console.log("Basket componentDidUpdate");
     if (!containAllInformations(this.props.basketList)) {
-      console.log("Basket containAllInformations NOT");
+      //console.log("Basket containAllInformations NOT");
       this.props.completeBasket(this.props.basketList);
     } else {
-      console.log("Basket containAllInformations YES");
+      //console.log("Basket containAllInformations YES");
     }
   }
 
