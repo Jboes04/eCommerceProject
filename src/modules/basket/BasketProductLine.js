@@ -17,7 +17,7 @@ class BasketProductLine extends Component {
     //console.log("RENDER TableTodos", this.props.todoList);
     return (
       <tr>
-        <td>{this.props.product.productId}</td>
+        <td className="d-none">{this.props.product.productId}</td>
         <td>{this.props.product.label}</td>
         <td>
           <span className="mr-2">{this.props.product.quantity}</span>
