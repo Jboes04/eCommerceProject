@@ -12,9 +12,8 @@ import Navbar from './modules/basket/Navbar';
 import ProductList from './modules/product/ProductList';
 import Signin from './modules/checkout/Signin';
 
-
-
 class App extends Component {
+
   getCategories = () => {
     return <Categories />
   }
@@ -33,10 +32,9 @@ class App extends Component {
     if(isConnected) {
     return <Delivery {...routerProps} />
   } else {
-    return <Signin {...routerProps} />
+    return <div/>
   }
 }
-
   getBasketRecap = (routerProps) => {
     const isConnected = this.props.profileInfo.Eea;
     if(isConnected) {
@@ -45,7 +43,6 @@ class App extends Component {
     return <Signin {...routerProps} />
   }
 }
-
 
   render() {
     return (

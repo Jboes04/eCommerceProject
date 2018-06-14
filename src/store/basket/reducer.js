@@ -5,6 +5,7 @@ const initialState = {
   fetching: false,
   error: "No error",
   temp: getBasketListFromLocalStorage(),
+  flag: false,
 };
 
 function addProduct(basketList, _productId) {
@@ -114,6 +115,18 @@ function basketReducer(state = initialState, action) {
       ...state,
       fetching: false,
       error: action.error,
+    }
+
+    case "SET_CONNECTION_FLAG":
+    return {
+      ...state,
+      flag: true,
+    }
+
+    case "REMOVE_CONNECTION_FLAG":
+    return {
+      ...state,
+      falg: false,
     }
 
 

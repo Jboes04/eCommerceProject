@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+
 import { connect } from "react-redux";
 import { getBasketList } from "./../../store/basket/selectors";
 import { basketHandler } from "./../../store/basket/handlers";
@@ -6,6 +7,7 @@ import { basketHandler } from "./../../store/basket/handlers";
 import StripeCheckout from 'react-stripe-checkout';
 
 class StripeCheck extends Component {
+
 
   onToken = token => {
       fetch("/charge", {
