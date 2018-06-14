@@ -12,10 +12,6 @@ import ProductList from './modules/product/ProductList';
 
 
 class App extends Component {
-  constructor(props){
-    super(props);
-
-  }
 
   getCategories = () => {
     return <Categories />
@@ -31,7 +27,6 @@ class App extends Component {
 
 
   render() {
-    console.log("profileComplet :", profileComplet);
     return (
 
       <div className="App" style={{backgroundColor:"papayawhip"}}>
