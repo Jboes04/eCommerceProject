@@ -77,5 +77,5 @@ class Delivery extends Component {
   }
 }
 
-const Connected = connect(null, basketHandler)(BasketProductLine);
+const Connected = connect(null, basketHandler)(Delivery);
 export default Connected;
