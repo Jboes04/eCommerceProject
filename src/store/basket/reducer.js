@@ -8,8 +8,7 @@ const initialState = {
 };
 
 function addProduct(basketList, _productId) {
-  console.log("addProduct=", _productId);
-
+  
   let productAlreadyInBasket = false;
 
   const newBasketList = basketList.map(product => {

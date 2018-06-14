@@ -1,18 +1,17 @@
 import React, { Component } from 'react';
-
+import { connect } from "react-redux";
+import { getBasketList } from "./../../store/basket/selectors";
 import StripeCheckout from 'react-stripe-checkout';
 
-export default class StripeCheck extends Component {
+class StripeCheck extends Component {
 
   onToken = token => {
       fetch("/charge", {
         method: "POST",
         body: JSON.stringify({
           stripeData: token,
-          products: [
-            {id: "42", quantity: 2},
-            {id: "1337", quantity: 1}
-          ]
+          basketList: this.props.basketList,
+          amount: this.props.amount
         }),
         headers: { "Content-Type": "application/json" }
       })
@@ -41,3 +40,6 @@ render(){
 }
 
 }
+
+const Connected = connect(getBasketList, null)(StripeCheck);
+export default Connected;
