@@ -9,7 +9,6 @@ const initialState = {
 };
 
 function addProduct(basketList, _productId) {
-  console.log("addProduct=", _productId);
 
   let productAlreadyInBasket = false;
 
@@ -85,6 +84,12 @@ function basketReducer(state = initialState, action) {
         ...state,
         basketList: [...newBasketListRemove],
       }
+
+    case "CLEAR_BASKET":
+        return {
+          ...state,
+          basketList: [],
+        }
 
     case "DISPLAY_BASKET":
       return {

@@ -3,7 +3,6 @@ import Basket from './Basket';
 import { connect } from "react-redux";
 import { getProfileInfo} from "../../store/profile/selectors";
 import { profileHandler } from "../../store/profile/handlers";
-import { Redirect } from 'react-router-dom'
 
 
 
@@ -13,10 +12,10 @@ class Navbar extends Component {
     let imagePath;
 
     if(this.props.profileInfo.Paa){
-      console.log("pi", this.props.profileInfo);
+
       imagePath = this.props.profileInfo.Paa;
     } else {
-      console.log("no image found");
+
        imagePath = "";
     }
     let disconnect = () => {
@@ -24,7 +23,7 @@ class Navbar extends Component {
       window.location.reload();
     }
 
-    console.log("image Path", imagePath);
+  
 
     return (
       <div className="pos-f-t">

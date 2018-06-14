@@ -1,4 +1,5 @@
-import { add, remove, erase, mountError, setConnectionFlag, removeConnectionFlag } from "./actions";
+
+import { add, remove, erase, clear, mountError, setConnectionFlag, removeConnectionFlag } from "./actions";
 import { completeBasketAsync } from "./asyncActions";
 
 export function basketHandler(dispatch) {
@@ -10,5 +11,6 @@ export function basketHandler(dispatch) {
     mountError: (error) => dispatch(mountError(error)),
     setConnectionFlag: () => dispatch(setConnectionFlag()),
     removeConnectionFlag: () => dispatch(removeConnectionFlag()),
+    clearBasket: () => dispatch(clear()),
   }
 }

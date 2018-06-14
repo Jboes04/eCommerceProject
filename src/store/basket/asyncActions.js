@@ -12,7 +12,7 @@ export function completeBasketAsync(basketList) {
       if (!containAllInformations([productFromBasket])) {
         return getProductDetail(productFromBasket.productId)
           .then(productDetail => {
-            console.log("productDetail=", productDetail);
+        
             return {...productFromBasket, label: productDetail.title, price: productDetail.min_price, url: completeDisplay(productDetail)} ;
           });
       } else {
