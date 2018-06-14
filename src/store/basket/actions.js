@@ -38,3 +38,15 @@ export function mountError(_error) {
   	error: _error,
   }
 }
+
+export function setConnectionFlag() {
+  return {
+    type: "SET_CONNECTION_FLAG",
+  }
+}
+
+export function removeConnectionFlag() {
+  return {
+    type: "REMOVE_CONNECTION_FLAG",
+  }
+}

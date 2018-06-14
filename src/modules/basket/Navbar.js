@@ -61,7 +61,7 @@ class Navbar extends Component {
           <div className="bg-light p-4">
             <h5 className="text-dark h4">RECAPITULATIF DE VOTRE PANIER</h5>
             <span className="text-muted">Rendre accessible le code au plus grand nombre...</span>
-            <Basket />
+            <Basket connectionFlag={this.props.connectionFlag} />
           </div>
         </div>
       </div>

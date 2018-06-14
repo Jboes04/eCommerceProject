@@ -1,14 +1,62 @@
 import React, { Component } from 'react';
+import { Route, withRouter } from 'react-router-dom';
 import { connect } from "react-redux";
 import { getBasketList } from "./../../store/basket/selectors";
 import { basketHandler } from "./../../store/basket/handlers";
-
+import Modal from 'react-modal';
 import BasketProductLine from './BasketProductLine';
 import {getTotalAmount, containAllInformations} from './basketUtility';
 import {formatAmount} from "./../../util.js";
 import { Link } from 'react-router-dom';
+import { getProfileInfo } from "../../store/profile/selectors";
+import { profileHandler } from "../../store/profile/handlers";
+import Delivery from '../checkout/Delivery';
+
+
+const customStyles = {
+  content : {
+    top                   : '50%',
+    left                  : '50%',
+    right                 : 'auto',
+    bottom                : 'auto',
+    marginRight           : '-50%',
+    transform             : 'translate(-50%, -50%)'
+  }
+};
 
 class Basket extends Component {
+  constructor() {
+    super();
+
+    this.state = {
+      modalIsOpen: false
+    };
+
+    this.openModal = this.openModal.bind(this);
+    this.afterOpenModal = this.afterOpenModal.bind(this);
+    this.closeModal = this.closeModal.bind(this);
+  }
+
+
+  openModal() {
+    this.setState({modalIsOpen: true});
+  }
+
+  afterOpenModal() {
+    // references are now sync'd and can be accessed.
+    this.subtitle.style.color = '#f00';
+  }
+
+  closeModal() {
+    this.setState({modalIsOpen: false});
+  }
+
+  getToCheckout(){
+    <Route path="/checkout" render={this.getCheckout} />
+  }
+  getCheckout = (routerProps) => {
+    return <Delivery {...routerProps} />
+  }
 
   componentDidMount() {
     //console.log("Basket componentDidMount");
@@ -37,6 +85,7 @@ class Basket extends Component {
   // }
 
   render() {
+    console.log("flag info", this.props.flagInfo);
     return (
       <div className="container">
 
@@ -69,18 +118,31 @@ class Basket extends Component {
               </table>
               <div className="alert bg-primary text-right text-white">
                 <span>
-                  <Link to={`/checkout`}>
-                  <button className="mr-3">Checkout</button>
-                  </Link>
+                {this.props.flagInfo
+                  ?<Link to={"/checkout"}>Checkout</Link>
+                  :<button className="mr-3 btn-danger" onClick={this.openModal}>Please Login to Checkout</button>
+                }
                 </span>
                 Total panier : {formatAmount(getTotalAmount(this.props.basketList))}
               </div>
             </div>
         }
+        <Modal
+          isOpen={this.state.modalIsOpen}
+          onAfterOpen={this.afterOpenModal}
+          onRequestClose={this.closeModal}
+          style={customStyles}
+          contentLabel="Checkout Error"
+        >
+          <h2 ref={subtitle => this.subtitle = subtitle}>It seems there is a problem</h2>
+          <div>Please Login before checking out</div><br/><br/>
+          <button onClick={this.closeModal}>close</button>
+        </Modal>
       </div>
     );
   }
 }
 
 const Connected = connect(getBasketList, basketHandler)(Basket);
+
 export default Connected;
