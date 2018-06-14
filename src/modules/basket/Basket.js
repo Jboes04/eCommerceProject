@@ -10,9 +10,7 @@ import {formatAmount} from "./../../util.js";
 class Basket extends Component {
   constructor(props) {
     super(props);
-    this.state(
-      {fetching: this.props.fetching}
-    );
+
   }
 
   componentDidMount() {
@@ -24,10 +22,10 @@ class Basket extends Component {
     const newBasketList = props.basketList;
     console.log("componentWillReceiveProps: ",newBasketList);
     if (!containAllInformations(newBasketList)) {
-      console.log("Basket containAllInformations NOT");
+      //console.log("Basket containAllInformations NOT");
       this.props.completeBasket(this.props.basketList);
     } else {
-      console.log("Basket containAllInformations YES");
+      //console.log("Basket containAllInformations YES");
     }
   }
 
