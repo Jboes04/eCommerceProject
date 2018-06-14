@@ -10,10 +10,10 @@ class Navbar extends Component {
     return (
       <div className="pos-f-t">
       <nav className="navbar navbar-dark bg-primary">
-        <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation" style={{borderWidth:1,
+        <button className="navbar-toggler shadow" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation" style={{borderWidth:1,
         borderStyle:'solid',
         borderColor:'white', height:50, width:80,}}>
-          <i className="fas fa-cart-arrow-down"></i>
+          <i className="fas fa-cart-arrow-down shadow"></i>
         </button>
           <img src={imagePath} alt="" style={{
              borderWidth:1,
