@@ -2,62 +2,77 @@ import React, { Component } from 'react';
 import { connect } from "react-redux";
 import { Link } from 'react-router-dom';
 import { basketHandler } from "./../../store/basket/handlers";
+import { getProfileInfo } from "./../../store/profile/selectors";
 import {formatAmount} from "./../../util.js";
 
 class Delivery extends Component {
-  //{ productId: "productid1", label: "label product 1", price: 10.10, quantity: 2, url: "http..."},
+  constructor(props) {
+    super(props);
+    this.state = {
+      email: "",
+      lastName: "",
+      firstName: "",
+    };
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (!this.state.email || !this.state.lastName || !this.state.firstName) {
+      this.setState({
+        email: nextProps.profileInfo.U3,
+        lastName: nextProps.profileInfo.wea,
+        firstName: nextProps.profileInfo.ofa
+      });
+    }
+  }
+
+handleform = (key, firstName, lastName, address, city, zip) => {
+  try {
+    localStorage.setItem(key, JSON.stringify(firstName, lastName, address, city, zip));
+    return true; // All went well
+  } catch (error) {
+    console.warn("Please fill in all the fields", error);
+    return false; // An error occured
+  }
+}
+
+handleChangeFirstName = (event) => {
+  this.setState({firstName: event.target.value});
+}
+
+handleChangeLastName = (event) => {
+  this.setState({lastName: event.target.value});
+}
+
+handleChangeEmail = (event) => {
+  this.setState({email: event.target.value});
+}
+
   render() {
+    console.log("props :", this.props.profileInfo);
     return (
-      <form>
-        <div className="form-row">
+      <div className="container pt-5 pb-5">
+      <form id="checkout" onSubmit={this.handleform}>
+        <div className="form-row d-flex justify-content-center">
           <div className="col-md-4 mb-3">
-            <label for="validationServer01">First name</label>
-            <input type="text" className="form-control is-valid" id="validationServer01" placeholder="First name" value="Mark" required />
-            <div className="valid-feedback">
-              Looks good!
-            </div>
+            <input type="text" className="form-control is-valid" id="firstName" placeholder="First name" value={this.state.firstName} onChange={this.handleChangeFirstName} required />
           </div>
           <div className="col-md-4 mb-3">
-            <label for="validationServer02">Last name</label>
-            <input type="text" className="form-control is-valid" id="validationServer02" placeholder="Last name" value="Otto" required />
-            <div className="valid-feedback">
-              Looks good!
-            </div>
+            <input type="text" className="form-control is-valid" id="lastName" placeholder="Last name" value={this.state.lastName} onChange={this.handleChangeLastName} required />
           </div>
           <div className="col-md-4 mb-3">
-            <label for="validationServerUsername">Username</label>
-            <div className="input-group">
-              <div className="input-group-prepend">
-                <span className="input-group-text" id="inputGroupPrepend3">@</span>
-              </div>
-              <input type="text" className="form-control is-invalid" id="validationServerUsername" placeholder="Username" aria-describedby="inputGroupPrepend3" required />
-              <div className="invalid-feedback">
-                Please choose a username.
-              </div>
-            </div>
+            <input type="text" className="form-control is-valid" id="email" placeholder="email" value={this.state.email} onChange={this.handleChangeEmail} required />
           </div>
         </div>
         <div className="form-row">
           <div className="col-md-6 mb-3">
-            <label for="validationServer03">City</label>
-            <input type="text" className="form-control is-invalid" id="validationServer03" placeholder="City" required/>
-            <div className="invalid-feedback">
-              Please provide a valid city.
-            </div>
+            <input type="text" className="form-control is-invalid" id="address" placeholder="Address" required/>
           </div>
           <div className="col-md-3 mb-3">
-            <label for="validationServer04">State</label>
-            <input type="text" className="form-control is-invalid" id="validationServer04" placeholder="State" required/>
-            <div className="invalid-feedback">
-              Please provide a valid state.
-            </div>
+
+            <input type="text" className="form-control is-invalid" id="city" placeholder="City" required/>
           </div>
           <div className="col-md-3 mb-3">
-            <label for="validationServer05">Zip</label>
-            <input type="text" className="form-control is-invalid" id="validationServer05" placeholder="Zip" required/>
-            <div className="invalid-feedback">
-              Please provide a valid zip.
-            </div>
+            <input type="text" className="form-control is-invalid" id="zip" placeholder="Post Code" required/>
           </div>
         </div>
         <div className="form-group">
@@ -71,11 +86,13 @@ class Delivery extends Component {
             </div>
           </div>
         </div>
-        <button className="btn btn-primary" type="submit">Submit form</button>
+        <button className="btn btn-primary" type="submit">Submit delivery info and go to payment</button>
       </form>
+    </div>
     );
   }
 }
 
-const Connected = connect(null, basketHandler)(Delivery);
+
+const Connected = connect(getProfileInfo, basketHandler)(Delivery);
 export default Connected;

@@ -6,6 +6,7 @@ import './App.css';
 import { getProfileInfo } from "./store/profile/selectors";
 import { profileHandler } from "./store/profile/handlers";
 import Categories from './modules/product/Categories';
+import Delivery from './modules/checkout/Delivery';
 import ProductDetails from './modules/product/productDetails';
 import Navbar from './modules/basket/Navbar';
 import ProductList from './modules/product/ProductList';
@@ -42,7 +43,8 @@ class App extends Component {
 
       <div className="App" style={{backgroundColor:"papayawhip"}}>
         <Navbar />
-        <Route exact path="/" render={this.getCategories}/>
+        <Delivery />
+        {/* <Route exact path="/" render={this.getCategories}/> */}
         <Route path="/categories/:categoryId/products" render={this.getProducts}/>
         <Route path="/products/:productId" render={this.getProductDetails}/>
         <Route path="/checkout" render={this.getCheckout} />
