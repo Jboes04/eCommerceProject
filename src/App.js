@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from "react-redux";
 import { Route, withRouter } from 'react-router-dom';
 import './App.css';
-
+import StripeCheck from './modules/stripe/StripeCheckout';
 import { getProfileInfo } from "./store/profile/selectors";
 import { profileHandler } from "./store/profile/handlers";
 import Categories from './modules/product/Categories';
@@ -42,6 +42,7 @@ class App extends Component {
 
       <div className="App" style={{backgroundColor:"papayawhip"}}>
         <Navbar />
+        <StripeCheck amount="1200" />
         <Route exact path="/" render={this.getCategories}/>
         <Route path="/categories/:categoryId/products" render={this.getProducts}/>
         <Route path="/products/:productId" render={this.getProductDetails}/>
