@@ -11,13 +11,14 @@ function profileReducer(state = initialState, action) {
       return {
         ...state,
         profileInfo: action.profile,
+        disconnect: action.disconnect,
       }
 
     case "DISCONNECT":
       console.log("disconnect REDUCER=", action.profile);
       return {
         ...state,
-        disconnect: action.disconnect,
+        profileInfo: {},
       }
 
     default:

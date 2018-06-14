@@ -3,23 +3,27 @@ import Basket from './Basket';
 import { connect } from "react-redux";
 import { getProfileInfo} from "../../store/profile/selectors";
 import { profileHandler } from "../../store/profile/handlers";
+import { Redirect } from 'react-router-dom'
 
 
 
 class Navbar extends Component {
-  constructor(props){
-    super(props);
-    this.state ={
-      imageP: this.props.profileInfo.Paa,
-    }
-  }
-
 
   render() {
-    let imagePath = this.props.profileInfo.Paa;
-    const disconnect = this.props.disconnect;
+    let imagePath;
 
+    if(this.props.profileInfo.Paa){
+      console.log("pi", this.props.profileInfo);
+      imagePath = this.props.profileInfo.Paa;
+    } else {
+      console.log("no image found");
+       imagePath = "../background.png"
+    }
+    let disconnect = () => {
+      this.props.disconnect();
+    }
 
+    console.log("image Path", imagePath);
 
     return (
       <div className="pos-f-t">
