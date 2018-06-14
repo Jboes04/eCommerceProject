@@ -93,5 +93,6 @@ handleChangeEmail = (event) => {
   }
 }
 
+
 const Connected = connect(getProfileInfo, basketHandler)(Delivery);
 export default Connected;

@@ -3,13 +3,15 @@ import { connect } from "react-redux";
 import { Route, withRouter } from 'react-router-dom';
 import './App.css';
 
-import { getBasketList } from "./store/basket/selectors";
+import { getProfileInfo } from "./store/profile/selectors";
 import { profileHandler } from "./store/profile/handlers";
 import Categories from './modules/product/Categories';
 import Delivery from './modules/checkout/Delivery';
 import ProductDetails from './modules/product/productDetails';
 import Navbar from './modules/basket/Navbar';
 import ProductList from './modules/product/ProductList';
+import Delivery from './modules/checkout/Delivery';
+import Signin from './modules/checkout/Signin';
 
 
 class App extends Component {
@@ -25,6 +27,16 @@ class App extends Component {
     return <ProductDetails {...routerProps} />
   }
 
+  getCheckout = (routerProps) => {
+    console.log(this.props.profileInfo.Eea);
+    const isConnected = this.props.profileInfo.Eea;
+    if(isConnected) {
+    return <Delivery {...routerProps} />
+  } else {
+    return <Signin {...routerProps} />
+  }
+  }
+
 
   render() {
     return (
@@ -35,10 +47,11 @@ class App extends Component {
         {/* <Route exact path="/" render={this.getCategories}/> */}
         <Route path="/categories/:categoryId/products" render={this.getProducts}/>
         <Route path="/products/:productId" render={this.getProductDetails}/>
+        <Route path="/checkout" render={this.getCheckout} />
       </div>
     );
   }
 }
 
-const Connected = withRouter(connect(getBasketList, profileHandler)(App));
+const Connected = withRouter(connect(getProfileInfo, profileHandler)(App));
 export default Connected;

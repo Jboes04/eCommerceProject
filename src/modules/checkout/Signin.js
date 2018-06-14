@@ -28,5 +28,5 @@ class Signin extends Component {
   }
 }
 
-const Connected = connect(null, basketHandler)(BasketProductLine);
+const Connected = connect(null, basketHandler)(Signin);
 export default Connected;

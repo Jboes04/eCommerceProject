@@ -7,10 +7,10 @@ export function containAllInformations(basketList) {
   if (basketList.find(product => {
     return (!product.label || !product.price || !product.url)
   })) {
-    console.log("containAllInformations:", basketList, "FALSE");
+    //console.log("containAllInformations: ", basketList, "FALSE");
     return false;
   } else {
-    console.log("containAllInformations:", basketList, "TRUE");
+    //console.log("containAllInformations: ", basketList, "TRUE");
     return true;
   }
 }

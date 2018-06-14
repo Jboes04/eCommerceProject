@@ -28,14 +28,14 @@ class Categories extends Component {
 
   render() {
     return (
-      <div class="container">
-        <div class="row">
-          <div class="col"></div>
-          <div class="col-6">
-          <table class="table table-striped">
-            <thead class="thead-dark" id="contour">
+      <div className="container">
+        <div className="row">
+          <div className="col"></div>
+          <div className="col-6">
+          <table className="table table-striped">
+            <thead className="thead-dark" id="contour">
               <tr>
-                <div class="shadow p-3 mb-0.3 rounded" id="titleCategory">Categories</div>
+                <div className="shadow p-3 mb-0.3 rounded" id="titleCategory">Categories</div>
               </tr>
             </thead>
             <br>
@@ -50,7 +50,7 @@ class Categories extends Component {
             </tbody>
           </table>
           </div>
-          <div class="col">
+          <div className="col">
           </div>
         </div>
       </div>
