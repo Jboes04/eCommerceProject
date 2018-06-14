@@ -42,7 +42,6 @@ class App extends Component {
 
       <div className="App" style={{backgroundColor:"papayawhip"}}>
         <Navbar />
-        <Delivery />
         {/* <Route exact path="/" render={this.getCategories}/> */}
         <Route path="/categories/:categoryId/products" render={this.getProducts}/>
         <Route path="/products/:productId" render={this.getProductDetails}/>
