@@ -119,11 +119,11 @@ class Basket extends Component {
               <div className="alert bg-primary text-right text-white">
                 <span>
                 {this.props.flagInfo
-                  ?<Link to={"/checkout"}>Checkout</Link>
+                  ?<Link to={"/checkout"} style={{color:"white"}}>Checkout here !  </Link>
                   :<button className="mr-3 btn-danger" onClick={this.openModal}>Please Login to Checkout</button>
                 }
                 </span>
-                Total panier : {formatAmount(getTotalAmount(this.props.basketList))}
+                - Total panier : {formatAmount(getTotalAmount(this.props.basketList))}
               </div>
             </div>
         }
