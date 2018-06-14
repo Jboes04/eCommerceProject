@@ -3,6 +3,11 @@ export function getTotalAmount(basketList) {
   return totalAmount;
 }
 
+export function getPaymentAmount(basketList) {
+  const totalAmount = Math.round(getTotalAmount(basketList)*100);
+  return totalAmount;
+}
+
 export function containAllInformations(basketList) {
   if (basketList.find(product => {
     return (!product.label || !product.price || !product.url)

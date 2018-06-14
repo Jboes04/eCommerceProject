@@ -25,25 +25,41 @@ console.log("publishable key :", keyPublishable);
 app.use(require("body-parser").json());
 app.use(require("body-parser").urlencoded({ extended: false }));
 
+function calculateAmount(basketList) {
+  return "1000";
+}
+
 app.post("/charge", (request, result) => {
   // here we need to calculate the price to pay depending on request infos
-  const amount = "1200";
-  // calculateAmount(request.body.products);
+  const amount = request.body.amount;
+  const basketList = request.body.basketList;
+  console.log("coté serveur basketList", basketList);
+  //const amountVerified = calculateAmount(basketList);
+  const amountVerified = amount;
   console.log("request's body", request.body.stripeData);
-  stripe.customers
-    .create({
-      email: request.body.stripeData.email,
-      source: request.body.stripeData.id
-    })
-    .then(customer =>
-      stripe.charges.create({
-        amount,
-        description: "Sample Charge",
-        currency: "eur",
-        customer: customer.id
+
+  if (amount === amountVerified) {
+
+    stripe.customers
+      .create({
+        email: request.body.stripeData.email,
+        source: request.body.stripeData.id
       })
-    )
-    .then(charge => result.json(charge));
+      .then(customer =>
+        stripe.charges.create({
+          amount,
+          description: "Sample Charge",
+          currency: "eur",
+          customer: customer.id
+        })
+      )
+      .then(charge => {
+        //console.log("charge returned:", charge);
+        result.json(charge)}
+      );
+  } else {
+    console.warn("ca va pas le paiement");
+  }
 });
 
 const port = process.env.PORT || 8080;

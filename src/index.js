@@ -13,17 +13,17 @@ window.googleConnectCallback = function(googleUser){
   const disconnect = () => googleUser.disconnect();
 
   // Useful data for your client-side scripts:
-  console.log("ID: " + profile.getId()); // Don't send this directly to your server!
-  console.log('Full Name: ' + profile.getName());
-  console.log('Given Name: ' + profile.getGivenName());
-  console.log('Family Name: ' + profile.getFamilyName());
-  console.log("Image URL: " + profile.getImageUrl());
-  console.log("Email: " + profile.getEmail());
+  // console.log("ID: " + profile.getId()); // Don't send this directly to your server!
+  // console.log('Full Name: ' + profile.getName());
+  // console.log('Given Name: ' + profile.getGivenName());
+  // console.log('Family Name: ' + profile.getFamilyName());
+  // console.log("Image URL: " + profile.getImageUrl());
+  // console.log("Email: " + profile.getEmail());
 
   // The ID token you need to pass to your backend:
-  const id_token = googleUser.getAuthResponse().id_token;
-  console.log("ID Token: " + id_token);
-  console.log("authResponse : ", googleUser.getAuthResponse());
+  //const id_token = googleUser.getAuthResponse().id_token;
+  //console.log("ID Token: " + id_token);
+  //console.log("authResponse : ", googleUser.getAuthResponse());
   // console.log("complete user ", disconnect);
   store.dispatch({type: "SET_PROFILE", profile: profile, disconnect: disconnect})
 };
