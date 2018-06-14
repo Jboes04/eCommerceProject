@@ -7,9 +7,10 @@ import { BrowserRouter } from "react-router-dom";
 import { Provider } from "react-redux";
 import store from "./store/store";
 
-window.googleConnectCallback = function(googleUser) {
-  // Useful data for your client-side scripts:
+window.googleConnectCallback = function(googleUser){
   const profile = googleUser.getBasicProfile();
+
+  // Useful data for your client-side scripts:
   console.log("ID: " + profile.getId()); // Don't send this directly to your server!
   console.log('Full Name: ' + profile.getName());
   console.log('Given Name: ' + profile.getGivenName());
@@ -20,7 +21,9 @@ window.googleConnectCallback = function(googleUser) {
   // The ID token you need to pass to your backend:
   const id_token = googleUser.getAuthResponse().id_token;
   console.log("ID Token: " + id_token);
+  store.dispatch({type: "SET_PROFILE", profile: profile,})
 };
+
 
 ReactDOM.render(
   <BrowserRouter>
