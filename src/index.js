@@ -7,6 +7,7 @@ import { BrowserRouter } from "react-router-dom";
 import { Provider } from "react-redux";
 import store from "./store/store";
 
+
 window.googleConnectCallback = function(googleUser){
   const profile = googleUser.getBasicProfile();
   const disconnect = () => googleUser.disconnect();
@@ -24,9 +25,10 @@ window.googleConnectCallback = function(googleUser){
   console.log("ID Token: " + id_token);
   console.log("authResponse : ", googleUser.getAuthResponse());
   // console.log("complete user ", disconnect);
-  store.dispatch({type: "SET_PROFILE", profile: profile,})
-  store.dispatch({type: "DISCONNECT", disconnect: disconnect,})
+  store.dispatch({type: "SET_PROFILE", profile: profile, disconnect: disconnect})
 };
+
+
 
 ReactDOM.render(
   <BrowserRouter>
