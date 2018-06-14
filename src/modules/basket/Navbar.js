@@ -27,7 +27,7 @@ class Navbar extends Component {
              height:50,
              backgroundColor:'#fff',
              borderRadius:100,
-           }} alt="..."/>
+           }}/>
           <div
             className="g-signin2"
             data-onsuccess="googleConnectCallback"
