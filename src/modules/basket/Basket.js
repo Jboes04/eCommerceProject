@@ -6,6 +6,7 @@ import { basketHandler } from "./../../store/basket/handlers";
 import BasketProductLine from './BasketProductLine';
 import {getTotalAmount, containAllInformations} from './basketUtility';
 import {formatAmount} from "./../../util.js";
+import { Link } from 'react-router-dom';
 
 class Basket extends Component {
   constructor(props) {
@@ -71,6 +72,11 @@ class Basket extends Component {
                 </tbody>
               </table>
               <div className="alert bg-primary text-right text-white">
+                <span>
+                  <Link to={`/checkout`}>
+                  <button className="mr-3">Checkout</button>
+                  </Link>
+                </span>
                 Total panier : {formatAmount(getTotalAmount(this.props.basketList))}
               </div>
             </div>
