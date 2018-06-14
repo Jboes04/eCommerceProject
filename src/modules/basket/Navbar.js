@@ -4,16 +4,30 @@ import { connect } from "react-redux";
 import { getProfileInfo} from "../../store/profile/selectors";
 import { profileHandler } from "../../store/profile/handlers";
 
+
+
 class Navbar extends Component {
+  constructor(props){
+    super(props);
+    this.state ={
+      imageP: this.props.profileInfo.Paa,
+    }
+  }
+
+
   render() {
-    const imagePath = this.props.profileInfo.Paa
+    let imagePath = this.props.profileInfo.Paa;
+    const disconnect = this.props.disconnect;
+
+
+
     return (
       <div className="pos-f-t">
       <nav className="navbar navbar-dark bg-primary">
         <button className="navbar-toggler shadow" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation" style={{borderWidth:1,
         borderStyle:'solid',
         borderColor:'white', height:50, width:80,}}>
-          <i className="fas fa-cart-arrow-down shadow"></i>
+          <i className="fas fa-cart-arrow-down"></i>
         </button>
           <img src={imagePath} alt="" style={{
              borderWidth:1,
@@ -28,11 +42,20 @@ class Navbar extends Component {
              backgroundColor:'#fff',
              borderRadius:100,
            }}/>
-          <div
-            className="g-signin2"
-            data-onsuccess="googleConnectCallback"
-            data-theme="primary"
-          />
+          <div>
+          {imagePath
+            ? <div><button title="logout" onClick={disconnect} style={{width:120, height:33}}>Sign Out</button><div
+              className="g-signin2"
+              data-onsuccess="googleConnectCallback"
+              data-theme="primary"
+             /></div>
+            : <div
+              className="g-signin2"
+              data-onsuccess="googleConnectCallback"
+              data-theme="primary"
+             />
+          }
+          </div>
       </nav>
         <div className="collapse" id="navbarToggleExternalContent" >
           <div className="bg-light p-4">

@@ -5,3 +5,11 @@ export function setProfile(_profile) {
     profile: _profile,
   }
 }
+
+export function setDisconnect(_disconnect) {
+  console.log("disconnect ACTION=", _disconnect);
+  return {
+    type: "DISCONNECT",
+    disconnect: _disconnect,
+  }
+}

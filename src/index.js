@@ -9,6 +9,7 @@ import store from "./store/store";
 
 window.googleConnectCallback = function(googleUser){
   const profile = googleUser.getBasicProfile();
+  const disconnect = () => googleUser.disconnect();
 
   // Useful data for your client-side scripts:
   console.log("ID: " + profile.getId()); // Don't send this directly to your server!
@@ -21,9 +22,11 @@ window.googleConnectCallback = function(googleUser){
   // The ID token you need to pass to your backend:
   const id_token = googleUser.getAuthResponse().id_token;
   console.log("ID Token: " + id_token);
+  console.log("authResponse : ", googleUser.getAuthResponse());
+  // console.log("complete user ", disconnect);
   store.dispatch({type: "SET_PROFILE", profile: profile,})
+  store.dispatch({type: "DISCONNECT", disconnect: disconnect,})
 };
-
 
 ReactDOM.render(
   <BrowserRouter>

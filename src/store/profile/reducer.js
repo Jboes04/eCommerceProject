@@ -1,5 +1,6 @@
 let initialState = {
   profileInfo: {},
+  disconnect: {},
 };
 
 function profileReducer(state = initialState, action) {
@@ -10,6 +11,13 @@ function profileReducer(state = initialState, action) {
       return {
         ...state,
         profileInfo: action.profile,
+      }
+
+    case "DISCONNECT":
+      console.log("disconnect REDUCER=", action.profile);
+      return {
+        ...state,
+        disconnect: action.disconnect,
       }
 
     default:
