@@ -22,7 +22,7 @@ class Categories extends Component {
         .then((response) => response.json())
         .then((resp) => {
           this.setState({"categories": resp})
-          console.log(resp);
+          //console.log(resp);
         })
   }
 

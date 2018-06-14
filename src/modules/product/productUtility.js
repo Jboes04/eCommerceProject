@@ -1,5 +1,5 @@
-export default function completeDisplay(products) {
-    let product = "https://www.decathlon.fr/media/" + products.image_path;
+export function completeDisplay(productToComplete) {
+    let product = "https://www.decathlon.fr/media/" + productToComplete.image_path;
     //console.log("this is product path : ", product);
     return product;
 }
