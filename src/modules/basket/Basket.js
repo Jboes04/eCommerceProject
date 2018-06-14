@@ -8,20 +8,38 @@ import {getTotalAmount, containAllInformations} from './basketUtility';
 import {formatAmount} from "./../../util.js";
 
 class Basket extends Component {
+  constructor(props) {
+    super(props);
+    this.state(
+      {fetching: this.props.fetching}
+    );
+  }
 
   componentDidMount() {
     //console.log("Basket componentDidMount");
     this.props.completeBasket(this.props.basketList);
   }
 
-  componentDidUpdate(prevProps) {
-    //console.log("Basket componentDidUpdate");
-    if (!containAllInformations(this.props.basketList)) {
-      //console.log("Basket containAllInformations NOT");
+  componentWillReceiveProps(props) {
+    const newBasketList = props.basketList;
+    console.log("componentWillReceiveProps: ",newBasketList);
+    if (!containAllInformations(newBasketList)) {
+      console.log("Basket containAllInformations NOT");
       this.props.completeBasket(this.props.basketList);
-      return true;
+    } else {
+      console.log("Basket containAllInformations YES");
     }
   }
+
+  // componentDidUpdate(prevProps) {
+  //   console.log("Basket componentDidUpdate");
+  //   if (!containAllInformations(this.props.basketList)) {
+  //     console.log("Basket containAllInformations NOT");
+  //     this.props.completeBasket(this.props.basketList);
+  //   } else {
+  //     console.log("Basket containAllInformations YES");
+  //   }
+  // }
 
   render() {
     return (

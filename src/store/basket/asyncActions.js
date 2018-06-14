@@ -16,7 +16,7 @@ export function completeBasketAsync(basketList) {
             return {...productFromBasket, label: productDetail.title, price: productDetail.min_price, url: completeDisplay(productDetail)} ;
           });
       } else {
-        return productFromBasket;
+        return {...productFromBasket};
       }
     });
 
