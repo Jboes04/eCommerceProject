@@ -19,8 +19,7 @@ class Basket extends Component {
     if (!containAllInformations(this.props.basketList)) {
       //console.log("Basket containAllInformations NOT");
       this.props.completeBasket(this.props.basketList);
-    } else {
-      //console.log("Basket containAllInformations YES");
+      return true;
     }
   }
 

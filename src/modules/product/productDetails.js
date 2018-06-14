@@ -3,6 +3,8 @@ import { connect } from "react-redux";
 import './../../App.css';
 
 import { basketHandler } from "../../store/basket/handlers";
+import {formatAmount} from "./../../util.js";
+import { completeDisplay } from "./productUtility";
 
 const fetch = require("node-fetch");
 
@@ -16,6 +18,7 @@ class ProductDetails extends Component {
   }
 
   componentDidMount() {
+    localStorage.clear();
     //console.log("product details", this.props.match);
       fetch(`https://decath-product-api.herokuapp.com${this.props.match.url}`)
         .catch((error) => {
@@ -34,17 +37,33 @@ class ProductDetails extends Component {
     }
   }
 
-  handlerAddProductToBasket = (event) => {
-    event.preventDefault();
-    this.props.addProductToBasket(event.target.id);
+  handlerAddProductToBasket = (id) => {
+    this.props.addProductToBasket(id);
   }
 
   render() {
     return (
-      <div>
-          <li key={this.state.productdetails.id}>{this.state.productdetails.title}<button id={this.state.productdetails.id} onClick={this.handlerAddProductToBasket}>add to cart</button></li>
-          <h5>{this.state.productdetails.description}</h5>
-      </div>
+      <div className="container">
+        <div class="row justify-content-center">
+          <div class="col-4">
+
+            <img style={{height: 300}} src={completeDisplay(this.state.productdetails)} className="rounded float-right" alt="..."/>
+          </div>
+
+            <div class="col-4">
+              <div class="card">
+              <div className="card-body" style={{height: 300}}>
+                <span className="align-middle">
+                <h4 className="card-title">{this.state.productdetails.title}</h4>
+                <p className="card-text">{this.state.productdetails.description}</p>
+                <h5 className="card-title">{formatAmount(this.state.productdetails.min_price)}</h5>
+                <a className="btn btn-primary" onClick={() => this.handlerAddProductToBasket(this.state.productdetails.id)}>Add to cart</a>
+              </span>
+              </div>
+            </div>
+          </div>
+          </div>
+        </div>
     );
   }
 }
