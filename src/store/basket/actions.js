@@ -19,6 +19,12 @@ export function erase(_productId){
   }
 }
 
+export function clear(){
+  return {
+    type: "CLEAR_BASKET",
+  }
+}
+
 export function fetching() {
   return {
     type: "FETCHING_BASKET"

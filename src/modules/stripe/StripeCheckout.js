@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
 import { getBasketList } from "./../../store/basket/selectors";
+import { basketHandler } from "./../../store/basket/handlers";
+
 import StripeCheckout from 'react-stripe-checkout';
 
 class StripeCheck extends Component {
@@ -18,8 +20,8 @@ class StripeCheck extends Component {
         .then(response => response.json())
         .then(data => {
           if (data.status === "succeeded") {
-            console.log(data);
-            // dispatch a success
+            console.log("Payment success :", data);
+            this.props.clearBasket();
           } else {
             console.warn(data);
             // dispatch an error
@@ -41,5 +43,5 @@ render(){
 
 }
 
-const Connected = connect(getBasketList, null)(StripeCheck);
+const Connected = connect(getBasketList, basketHandler)(StripeCheck);
 export default Connected;

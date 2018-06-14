@@ -1,4 +1,4 @@
-import { add, remove, erase, mountError } from "./actions";
+import { add, remove, erase, clear, mountError } from "./actions";
 import { completeBasketAsync } from "./asyncActions";
 
 export function basketHandler(dispatch) {
@@ -8,5 +8,6 @@ export function basketHandler(dispatch) {
     deleteProductToBasket: (productId) => dispatch(erase(productId)),
 	  completeBasket: (basketList) => dispatch(completeBasketAsync(basketList)),
     mountError: (error) => dispatch(mountError()),
+    clearBasket: () => dispatch(clear()),
   }
 }
