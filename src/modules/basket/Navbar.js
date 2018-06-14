@@ -46,7 +46,6 @@ class Navbar extends Component {
             <Basket />
           </div>
         </div>
-
       </div>
     );
   }
