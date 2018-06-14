@@ -17,10 +17,11 @@ class Navbar extends Component {
       imagePath = this.props.profileInfo.Paa;
     } else {
       console.log("no image found");
-       imagePath = "../background.png"
+       imagePath = "";
     }
     let disconnect = () => {
       this.props.disconnect();
+      window.location.reload();
     }
 
     console.log("image Path", imagePath);
@@ -33,7 +34,8 @@ class Navbar extends Component {
         borderColor:'white', height:50, width:80,}}>
           <i className="fas fa-cart-arrow-down"></i>
         </button>
-          <img src={imagePath} alt="" style={{
+        {imagePath
+          ?<img src={imagePath} alt="" style={{
              borderWidth:1,
              borderStyle:'solid',
              borderColor:'white',
@@ -46,18 +48,12 @@ class Navbar extends Component {
              backgroundColor:'#fff',
              borderRadius:100,
            }}/>
+           :<div/>
+         }
           <div>
           {imagePath
-            ? <div><button title="logout" onClick={disconnect} style={{width:120, height:33}}>Sign Out</button><div
-              className="g-signin2"
-              data-onsuccess="googleConnectCallback"
-              data-theme="primary"
-             /></div>
-            : <div
-              className="g-signin2"
-              data-onsuccess="googleConnectCallback"
-              data-theme="primary"
-             />
+            ? <button title="logout" onClick={disconnect} style={{width:120, height:33}}>Sign Out</button>
+            : <div className="g-signin2" data-onsuccess="googleConnectCallback" data-theme="primary"/>
           }
           </div>
       </nav>
