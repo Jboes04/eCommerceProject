@@ -19,8 +19,7 @@ class Basket extends Component {
     if (!containAllInformations(this.props.basketList)) {
       //console.log("Basket containAllInformations NOT");
       this.props.completeBasket(this.props.basketList);
-    } else {
-      //console.log("Basket containAllInformations YES");
+      return true;
     }
   }
 
@@ -38,7 +37,7 @@ class Basket extends Component {
                 <thead>
                   <tr>
                     <th className="d-none" scope="col">ID</th>
-                    <th scope="col">ARTICLE</th>
+                    <th scope="col" colSpan="2">ARTICLE</th>
                     <th scope="col">QUANTITE</th>
                     <th scope="col">SUPPRIMER</th>
                     <th scope="col">PRIX UNITAIRE</th>

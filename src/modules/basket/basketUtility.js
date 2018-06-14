@@ -5,12 +5,12 @@ export function getTotalAmount(basketList) {
 
 export function containAllInformations(basketList) {
   if (basketList.find(product => {
-    return (!product.label || !product.price)
+    return (!product.label || !product.price || !product.url)
   })) {
-    //console.log("containAllInformations:", basketList, "FALSE");
+    console.log("containAllInformations:", basketList, "FALSE");
     return false;
   } else {
-    //console.log("containAllInformations:", basketList, "TRUE");
+    console.log("containAllInformations:", basketList, "TRUE");
     return true;
   }
 }
@@ -26,11 +26,11 @@ export function saveBasketListInLocalStorage(basketList) {
 export function getBasketListFromLocalStorage() {
   const basketInStorage = localStorage.getItem("basket");
   if (basketInStorage) {
-    console.log("getBasketListFromLocalStorage=", basketInStorage);
+    //console.log("getBasketListFromLocalStorage=", basketInStorage);
     const basketList = JSON.parse(basketInStorage).map(productStorage => {
       return {productId: productStorage.lsId, quantity: productStorage.lsQuantity}
     });
-    console.log("basketList=", basketList);
+    //console.log("basketList=", basketList);
     return basketList;
   } else {
     return [];
