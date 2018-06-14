@@ -10,7 +10,6 @@ import Delivery from './modules/checkout/Delivery';
 import ProductDetails from './modules/product/productDetails';
 import Navbar from './modules/basket/Navbar';
 import ProductList from './modules/product/ProductList';
-import Delivery from './modules/checkout/Delivery';
 import Signin from './modules/checkout/Signin';
 
 

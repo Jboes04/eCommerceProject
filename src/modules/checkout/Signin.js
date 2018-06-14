@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
-import { Link } from 'react-router-dom';
 import { basketHandler } from "./../../store/basket/handlers";
-import {formatAmount} from "./../../util.js";
 
 class Signin extends Component {
   //{ productId: "productid1", label: "label product 1", price: 10.10, quantity: 2, url: "http..."},

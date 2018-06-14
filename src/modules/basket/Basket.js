@@ -9,10 +9,6 @@ import {formatAmount} from "./../../util.js";
 import { Link } from 'react-router-dom';
 
 class Basket extends Component {
-  constructor(props) {
-    super(props);
-
-  }
 
   componentDidMount() {
     //console.log("Basket componentDidMount");

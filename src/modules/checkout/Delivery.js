@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
-import { Link } from 'react-router-dom';
 import { basketHandler } from "./../../store/basket/handlers";
 import { getProfileInfo } from "./../../store/profile/selectors";
-import {formatAmount} from "./../../util.js";
 
 class Delivery extends Component {
   constructor(props) {
@@ -92,7 +90,6 @@ handleChangeEmail = (event) => {
     );
   }
 }
-
 
 const Connected = connect(getProfileInfo, basketHandler)(Delivery);
 export default Connected;
