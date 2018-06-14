@@ -8,7 +8,7 @@ const initialState = {
 };
 
 function addProduct(basketList, _productId) {
-  
+
   let productAlreadyInBasket = false;
 
   const newBasketList = basketList.map(product => {
@@ -83,6 +83,12 @@ function basketReducer(state = initialState, action) {
         ...state,
         basketList: [...newBasketListRemove],
       }
+
+    case "CLEAR_BASKET":
+        return {
+          ...state,
+          basketList: [],
+        }
 
     case "DISPLAY_BASKET":
       return {
