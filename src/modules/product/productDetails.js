@@ -57,7 +57,7 @@ class ProductDetails extends Component {
                 <h4 className="card-title">{this.state.productdetails.title}</h4>
                 <p className="card-text">{this.state.productdetails.description}</p>
                 <h5 className="card-title">{formatAmount(this.state.productdetails.min_price)}</h5>
-                <a className="btn btn-primary" onClick={() => this.handlerAddProductToBasket(this.state.productdetails.id)}>Add to cart</a>
+                <button className="btn btn-primary" onClick={() => this.handlerAddProductToBasket(this.state.productdetails.id)}>Add to cart</button>
               </span>
               </div>
             </div>

@@ -12,7 +12,6 @@ import ProductList from './modules/product/ProductList';
 
 
 class App extends Component {
-
   getCategories = () => {
     return <Categories />
   }
@@ -34,8 +33,6 @@ class App extends Component {
         <Route exact path="/" render={this.getCategories}/>
         <Route path="/categories/:categoryId/products" render={this.getProducts}/>
         <Route path="/products/:productId" render={this.getProductDetails}/>
-
-      {/* </div> */}
       </div>
     );
   }

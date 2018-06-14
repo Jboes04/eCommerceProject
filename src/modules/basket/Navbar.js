@@ -4,15 +4,7 @@ import { connect } from "react-redux";
 import { getProfileInfo} from "../../store/profile/selectors";
 import { profileHandler } from "../../store/profile/handlers";
 
-
-
-// console.log("cookie value ",cookie.load('connect.sid'));
-
-
-
 class Navbar extends Component {
-
-
   render() {
     const imagePath = this.props.profileInfo.Paa
     return (
@@ -35,7 +27,7 @@ class Navbar extends Component {
              height:50,
              backgroundColor:'#fff',
              borderRadius:100,
-           }}/>
+           }} alt="..."/>
           <div
             className="g-signin2"
             data-onsuccess="googleConnectCallback"
