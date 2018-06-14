@@ -2,14 +2,20 @@ import React, { Component } from 'react';
 import { connect } from "react-redux";
 import { basketHandler } from "./../../store/basket/handlers";
 import { getProfileInfo } from "./../../store/profile/selectors";
+import { Redirect } from 'react-router-dom';
+
 
 class Delivery extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      email: "",
-      lastName: "",
-      firstName: "",
+      email: props.profileInfo.U3,
+      lastName: props.profileInfo.wea,
+      firstName: props.profileInfo.ofa,
+      address: "",
+      city: "",
+      postcode: "",
+      formAccepted: false,
     };
   }
 
@@ -23,14 +29,18 @@ class Delivery extends Component {
     }
   }
 
-handleform = (key, firstName, lastName, address, city, zip) => {
+handleForm = (event) => {
+  event.preventDefault();
   try {
-    localStorage.setItem(key, JSON.stringify(firstName, lastName, address, city, zip));
-    return true; // All went well
+    localStorage.setItem("address", JSON.stringify({...this.state}));
+    //console.log("local storage: ", localStorage);
+    this.setState({formAccepted: true})
+    return true;
   } catch (error) {
     console.warn("Please fill in all the fields", error);
     return false; // An error occured
   }
+
 }
 
 handleChangeFirstName = (event) => {
@@ -45,32 +55,52 @@ handleChangeEmail = (event) => {
   this.setState({email: event.target.value});
 }
 
+handleChangeAddress = (event) => {
+  this.setState({address: event.target.value});
+}
+
+handleChangeCity = (event) => {
+  this.setState({city: event.target.value});
+}
+
+handleChangePostCode = (event) => {
+  this.setState({postcode: event.target.value});
+}
+
+// goToBasketRecap = () => {
+//   if (localStorage.getItem("address") !== null) {
+//     <Redirect to="/basketrecap" />
+//   }
+// }
+
+
+
   render() {
     console.log("props :", this.props.profileInfo);
     return (
       <div className="container pt-5 pb-5">
-      <form id="checkout" onSubmit={this.handleform}>
+      <form id="checkout" onSubmit={this.handleForm}>
         <div className="form-row d-flex justify-content-center">
           <div className="col-md-4 mb-3">
-            <input type="text" className="form-control is-valid" id="firstName" placeholder="First name" value={this.state.firstName} onChange={this.handleChangeFirstName} required />
+            <input type="text" className="form-control" id="firstName" placeholder="First name" value={this.state.firstName} onChange={this.handleChangeFirstName} required />
           </div>
           <div className="col-md-4 mb-3">
-            <input type="text" className="form-control is-valid" id="lastName" placeholder="Last name" value={this.state.lastName} onChange={this.handleChangeLastName} required />
+            <input type="text" className="form-control" id="lastName" placeholder="Last name" value={this.state.lastName} onChange={this.handleChangeLastName} required />
           </div>
           <div className="col-md-4 mb-3">
-            <input type="text" className="form-control is-valid" id="email" placeholder="email" value={this.state.email} onChange={this.handleChangeEmail} required />
+            <input type="text" className="form-control" id="email" placeholder="email" value={this.state.email} onChange={this.handleChangeEmail} required />
           </div>
         </div>
         <div className="form-row">
           <div className="col-md-6 mb-3">
-            <input type="text" className="form-control is-invalid" id="address" placeholder="Address" required/>
+            <input type="text" className="form-control" id="address" placeholder="Address" value={this.state.address} onChange={this.handleChangeAddress} required/>
           </div>
           <div className="col-md-3 mb-3">
 
-            <input type="text" className="form-control is-invalid" id="city" placeholder="City" required/>
+            <input type="text" className="form-control" id="city" placeholder="City" value={this.state.city} onChange={this.handleChangeCity} required/>
           </div>
           <div className="col-md-3 mb-3">
-            <input type="text" className="form-control is-invalid" id="zip" placeholder="Post Code" required/>
+            <input type="text" className="form-control" id="zip" placeholder="Post Code" value={this.state.postcode} onChange={this.handleChangePostCode} required/>
           </div>
         </div>
         <div className="form-group">
@@ -86,6 +116,7 @@ handleChangeEmail = (event) => {
         </div>
         <button className="btn btn-primary" type="submit">Submit delivery info and go to payment</button>
       </form>
+      {this.state.formAccepted && <Redirect to="/basketrecap" />}
     </div>
     );
   }
