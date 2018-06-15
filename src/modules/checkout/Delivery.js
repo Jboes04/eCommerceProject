@@ -76,7 +76,7 @@ handleChangePostCode = (event) => {
 
 
   render() {
-    console.log("props :", this.props.profileInfo);
+    //console.log("props :", this.props.profileInfo);
     return (
       <div className="container pt-5 pb-5">
       <form id="checkout" onSubmit={this.handleForm}>
@@ -105,8 +105,9 @@ handleChangePostCode = (event) => {
         </div>
         <div className="form-group">
           <div className="form-check">
-            <input className="form-check-input is-invalid" type="checkbox" value="" id="invalidCheck3" required/>
+
             <label className="form-check-label" htmlFor="invalidCheck3">
+
               Agree to terms and conditions
             </label>
             <div className="invalid-feedback">
