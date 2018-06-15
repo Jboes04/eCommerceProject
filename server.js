@@ -22,7 +22,7 @@ const stripe = Stripe(keySecret);
 
 console.log("publishable key :", keyPublishable);
 
-app.use("/static", express.static("/build/static"));
+app.use("/static", express.static("./build/static"));
 
 app.use(require("body-parser").json());
 app.use(require("body-parser").urlencoded({ extended: false }));
