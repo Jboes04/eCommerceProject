@@ -42,6 +42,7 @@ class Navbar extends Component {
       <nav className="navbar navbar-dark bg-primary">
         <div>
 
+
         <Badge color="secondary" badgeContent={getTotalQuantity(this.props.basketList)} className={classes.margin}>
           <button className="navbar-toggler shadow" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation" style={{borderWidth:1,
           borderStyle:'solid',
@@ -50,7 +51,8 @@ class Navbar extends Component {
           </button>
         </Badge>
 
-        <a href="/"><button className="navbar-toggler shadow" onClick="window.location.href='/'" type="button" data-toggle="collapse" aria-controls="navbarToggleExternalContent" aria-expanded="false" style={{borderWidth:1,
+        <a href="/"><button className="navbar-toggler shadow" type="button" data-toggle="collapse" aria-controls="navbarToggleExternalContent" aria-expanded="false" style={{borderWidth:1,
+
         borderStyle:'solid',
         borderColor:'white', height:50, width:80, marginLeft:5,}}>
           <i className="fas fa-home"></i>

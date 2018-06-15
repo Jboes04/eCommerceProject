@@ -39,19 +39,22 @@ getLocalInfo = () => {
             </li>
             {this.props.basketList.map((product) =>
               <li key={product.productId} className="list-group-item">
-                <td width="350">{product.label}</td>
-                <td width="110">{product.quantity}</td>
-                <td width="120">{formatAmount(product.price)}</td>
-                <td width="120">{formatAmount(product.quantity*product.price)}</td>
+                <table>
+                  <td width="350">{product.label}</td>
+                  <td width="110">{product.quantity}</td>
+                  <td width="120">{formatAmount(product.price)}</td>
+                  <td width="120">{formatAmount(product.quantity*product.price)}</td>
+                </table>
               </li>
             )}
             <li className="BasketRecap list-group-item">
-              <td width="350"></td>
-              <td width="110"></td>
-              <td width="120">PRIX TOTAL</td>
-              <td width="120">{formatAmount(getTotalAmount(this.props.basketList))}</td>
+              <table>
+                <td width="350"></td>
+                <td width="110"></td>
+                <td width="120">PRIX TOTAL</td>
+                <td width="120">{formatAmount(getTotalAmount(this.props.basketList))}</td>
+              </table>
             </li>
-
           </ul>
         </div>
         </div>
