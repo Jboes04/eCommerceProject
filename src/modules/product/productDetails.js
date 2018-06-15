@@ -44,7 +44,7 @@ class ProductDetails extends Component {
   render() {
     return (
       <div className="container">
-        <div class="row justify-content-center ProductDetails">
+        <div class="row justify-content-center">
           <div class="col-4">
 
             <img style={{height: 300}} src={completeDisplay(this.state.productdetails)} className="rounded float-right" alt="..."/>
