@@ -1,5 +1,6 @@
 const express = require("express");
 const Stripe = require("stripe");
+const path = require("path");
 
 if (process.env.NODE_ENV !== "production") {
   /**
@@ -10,7 +11,6 @@ if (process.env.NODE_ENV !== "production") {
    * REACT_APP_PUBLISHABLE_KEY="mykey"
    * REACT_APP_SECRET_KEY="myscecretkey"
    */
-  const path = require("path");
   require("dotenv").config({ path: path.resolve(process.cwd(), ".env.local") });
 }
 
