@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Route, withRouter } from 'react-router-dom';
+import { Route } from 'react-router-dom';
 import { connect } from "react-redux";
 import { getBasketList } from "./../../store/basket/selectors";
 import { basketHandler } from "./../../store/basket/handlers";
@@ -7,9 +7,6 @@ import Modal from 'react-modal';
 import BasketProductLine from './BasketProductLine';
 import {getTotalAmount, containAllInformations} from './basketUtility';
 import {formatAmount} from "./../../util.js";
-import { Link } from 'react-router-dom';
-import { getProfileInfo } from "../../store/profile/selectors";
-import { profileHandler } from "../../store/profile/handlers";
 import Delivery from '../checkout/Delivery';
 
 
@@ -52,10 +49,10 @@ class Basket extends Component {
   }
 
   getToCheckout(){
-    <Route path="/checkout" render={this.getCheckout} />
+    return <Route path="/checkout" render={this.getCheckout} />;
   }
   getCheckout = (routerProps) => {
-    return <Delivery {...routerProps} />
+    return <Delivery {...routerProps} />;
   }
 
   componentDidMount() {
@@ -85,7 +82,6 @@ class Basket extends Component {
   // }
 
   render() {
-    console.log("flag info", this.props.flagInfo);
     return (
       <div className="container">
 
@@ -119,11 +115,11 @@ class Basket extends Component {
               <div className="alert bg-primary text-right text-white">
                 <span>
                 {this.props.flagInfo
-                  ?<Link to={"/checkout"} style={{color:"white"}}>Checkout here !  </Link>
+                  ?<a href="/checkout"><button>Checkout here !    </button></a>
                   :<button className="mr-3 btn-danger" onClick={this.openModal}>Please Login to Checkout</button>
                 }
                 </span>
-                - Total panier : {formatAmount(getTotalAmount(this.props.basketList))}
+                 - Total panier : {formatAmount(getTotalAmount(this.props.basketList))}
               </div>
             </div>
         }

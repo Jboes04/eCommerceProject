@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import { basketHandler } from "../../store/basket/handlers";
 import './../../App.css';
 import './../../categorie.css';
+import _ from "underscore";
 
 class Categories extends Component {
   constructor(props) {
@@ -30,30 +31,25 @@ class Categories extends Component {
     return (
       <div className="container">
         <div className="row">
-          <div className="col"></div>
-          <div className="col-6">
-          <table className="table table-striped">
-            <thead className="thead-dark" id="contour">
-              <tr>
-                <div className="shadow p-3 mb-0.3 rounded" id="titleCategory">Categories</div>
-              </tr>
-            </thead>
-            <br>
-            </br>
-            <tbody id="tableCategory">
-              <tr>
-                <th scope="row">{this.state.categories.map((element) =>
-                    <tr id="allDescription" key={element.id}><Link to={`/categories/${element.id}/products`}>{element.label}</Link> </tr>
-                  )}
-                </th>
-              </tr>
-            </tbody>
-          </table>
-          </div>
-          <div className="col">
-          </div>
+
+          <div className="col-6 col-sm-4"></div>
+          <div className="col-6 col-sm-4">Categories</div>
+          <div className="col-6 col-sm-4"></div>
+
         </div>
+        <div className="row">
+          {_.sortBy(this.state.categories, "label").map((element) =>
+            <div key={element.id} className="col-6 col-sm-4 card">
+              <div className="card-body">
+                <Link to={`/categories/${element.id}/products`}>{element.label}</Link>
+              </div>
+            </div>
+          )}
+
+        </div>
+
       </div>
+
     );
   }
 }

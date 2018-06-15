@@ -23,16 +23,25 @@ class Navbar extends Component {
       window.location.reload();
     }
 
-  
+
 
     return (
       <div className="pos-f-t">
       <nav className="navbar navbar-dark bg-primary">
+        <div>
         <button className="navbar-toggler shadow" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation" style={{borderWidth:1,
         borderStyle:'solid',
         borderColor:'white', height:50, width:80,}}>
           <i className="fas fa-cart-arrow-down"></i>
         </button>
+        <a href="/"><button className="navbar-toggler shadow" onclick="window.location.href='/'" type="button" data-toggle="collapse" aria-controls="navbarToggleExternalContent" aria-expanded="false" style={{borderWidth:1,
+        borderStyle:'solid',
+        borderColor:'white', height:50, width:80, marginLeft:5,}}>
+          <i class="fas fa-home"></i>
+        </button>
+      </a>
+      </div>
+
         {imagePath
           ?<img src={imagePath} alt="" style={{
              borderWidth:1,
