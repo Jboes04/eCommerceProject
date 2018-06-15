@@ -35,7 +35,7 @@ function addProduct(basketList, _productId) {
 
 
 function removeProduct(basketList, _productId) {
-  console.log("removeProduct=", _productId);
+  //console.log("removeProduct=", _productId);
 
     const newBasketList = basketList.map(product => {
     if (product.productId === _productId) {
@@ -49,6 +49,13 @@ function removeProduct(basketList, _productId) {
     }
   });
 
+  saveBasketListInLocalStorage(newBasketList);
+  return newBasketList;
+}
+
+function clearBasket() {
+  //console.log("clearBasket");
+  const newBasketList = [];
   saveBasketListInLocalStorage(newBasketList);
   return newBasketList;
 }
@@ -86,9 +93,10 @@ function basketReducer(state = initialState, action) {
       }
 
     case "CLEAR_BASKET":
+        const newBasketClear = clearBasket();
         return {
           ...state,
-          basketList: [],
+          basketList: newBasketClear,
         }
 
     case "DISPLAY_BASKET":

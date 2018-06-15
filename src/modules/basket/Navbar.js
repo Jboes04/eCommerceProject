@@ -10,20 +10,15 @@ class Navbar extends Component {
 
   render() {
     let imagePath;
-
     if(this.props.profileInfo.Paa){
-
       imagePath = this.props.profileInfo.Paa;
     } else {
-
-       imagePath = "";
+      imagePath = "";
     }
     let disconnect = () => {
       this.props.disconnect();
       window.location.reload();
     }
-
-
 
     return (
       <div className="pos-f-t">
@@ -34,10 +29,10 @@ class Navbar extends Component {
         borderColor:'white', height:50, width:80,}}>
           <i className="fas fa-cart-arrow-down"></i>
         </button>
-        <a href="/"><button className="navbar-toggler shadow" onclick="window.location.href='/'" type="button" data-toggle="collapse" aria-controls="navbarToggleExternalContent" aria-expanded="false" style={{borderWidth:1,
+        <a href="/"><button className="navbar-toggler shadow" onClick="window.location.href='/'" type="button" data-toggle="collapse" aria-controls="navbarToggleExternalContent" aria-expanded="false" style={{borderWidth:1,
         borderStyle:'solid',
         borderColor:'white', height:50, width:80, marginLeft:5,}}>
-          <i class="fas fa-home"></i>
+          <i className="fas fa-home"></i>
         </button>
       </a>
       </div>
