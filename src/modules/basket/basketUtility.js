@@ -3,6 +3,11 @@ export function getTotalAmount(basketList) {
   return totalAmount;
 }
 
+export function getTotalQuantity(basketList) {
+  const totalAmount = basketList.reduce((accumulator, currentProduct) => accumulator + currentProduct.quantity, 0);
+  return totalAmount;
+}
+
 export function getPaymentAmount(basketList) {
   const totalAmount = Math.round(getTotalAmount(basketList)*100);
   return totalAmount;

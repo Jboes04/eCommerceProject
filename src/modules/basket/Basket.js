@@ -113,13 +113,13 @@ class Basket extends Component {
                 </tbody>
               </table>
               <div className="alert bg-primary text-right text-white">
-                <span>
+                <span className="mr-2">
                 {this.props.flagInfo
                   ?<a href="/checkout"><button>Checkout here !    </button></a>
                   :<button className="mr-3 btn-danger" onClick={this.openModal}>Please Login to Checkout</button>
                 }
                 </span>
-                 - Total panier : {formatAmount(getTotalAmount(this.props.basketList))}
+                 Total panier : {formatAmount(getTotalAmount(this.props.basketList))}
               </div>
             </div>
         }
