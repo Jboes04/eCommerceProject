@@ -22,6 +22,8 @@ const stripe = Stripe(keySecret);
 
 console.log("publishable key :", keyPublishable);
 
+app.use("/static", express.static("./build/static"));
+
 app.use(require("body-parser").json());
 app.use(require("body-parser").urlencoded({ extended: false }));
 
@@ -60,6 +62,10 @@ app.post("/charge", (request, result) => {
   } else {
     console.warn("ca va pas le paiement");
   }
+});
+
+app.get("*", (request, result)=>{
+  result.sendFile(path.resolve("./build/index.html"));
 });
 
 const port = process.env.PORT || 8080;
