@@ -106,7 +106,7 @@ handleChangePostCode = (event) => {
         <div className="form-group">
           <div className="form-check">
             <input className="form-check-input is-invalid" type="checkbox" value="" id="invalidCheck3" required/>
-            <label className="form-check-label" for="invalidCheck3">
+            <label className="form-check-label" htmlFor="invalidCheck3">
               Agree to terms and conditions
             </label>
             <div className="invalid-feedback">

@@ -44,7 +44,7 @@ class ProductDetails extends Component {
   render() {
     return (
       <div className="container">
-        <div class="row justify-content-center">
+        <div class="row justify-content-center ProductDetails">
           <div class="col-4">
 
             <img style={{height: 300}} src={completeDisplay(this.state.productdetails)} className="rounded float-right" alt="..."/>
@@ -56,7 +56,13 @@ class ProductDetails extends Component {
                 <span className="align-middle">
                 <h4 className="card-title">{this.state.productdetails.title}</h4>
                 <p className="card-text">{this.state.productdetails.description}</p>
+                <table>
+                  <td style={{width: 120}}></td>
+                  <td style={{width: 130}}><span className={`mb-3 rating-static rating-${Math.round(this.state.productdetails.rating*2)/2*10}`}></span></td>
+                  <td style={{width: 57}}></td>
+                </table>
                 <h5 className="card-title">{formatAmount(this.state.productdetails.min_price)}</h5>
+
                 <button className="btn btn-primary" onClick={() => this.handlerAddProductToBasket(this.state.productdetails.id)}>Add to cart</button>
               </span>
               </div>

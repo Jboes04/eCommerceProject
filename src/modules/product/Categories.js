@@ -30,16 +30,16 @@ class Categories extends Component {
   render() {
     return (
       <div className="container">
-        <div className="row">
+        <div className="row d-flex justify-content-center mb-2 pt-4 pb-4">
 
-          <div className="col-6 col-sm-4"></div>
-          <div className="col-6 col-sm-4">Categories</div>
-          <div className="col-6 col-sm-4"></div>
+
+          <div className="col-4" id="titleCategory">Categories</div>
+
 
         </div>
-        <div className="row">
+        <div className="row d-flex justify-content-center">
           {_.sortBy(this.state.categories, "label").map((element) =>
-            <div key={element.id} className="col-6 col-sm-4 card">
+            <div key={element.id} className="col-5 col-sm-3 card m-2">
               <div className="card-body">
                 <Link to={`/categories/${element.id}/products`}>{element.label}</Link>
               </div>

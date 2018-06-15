@@ -10,7 +10,6 @@ import BasketRecap from './modules/checkout/BasketRecap';
 import ProductDetails from './modules/product/productDetails';
 import Navbar from './modules/basket/Navbar';
 import ProductList from './modules/product/ProductList';
-import Signin from './modules/checkout/Signin';
 
 class App extends Component {
 
@@ -32,15 +31,13 @@ class App extends Component {
     if(isConnected) {
     return <Delivery {...routerProps} />
   } else {
-    return <div/>
+    return <div>Please Signin to checkout or get back to <a href="/">Homepage</a></div>
   }
 }
   getBasketRecap = (routerProps) => {
     const isConnected = this.props.profileInfo.Eea;
     if(isConnected) {
     return <BasketRecap {...routerProps} />
-  } else {
-    return <Signin {...routerProps} />
   }
 }
 
