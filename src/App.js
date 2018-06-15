@@ -1,18 +1,15 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
-//import url from 'url'
 import { Route, withRouter } from 'react-router-dom';
-import { getBasketList } from "./store/basket/selectors";
-import { basketHandler } from "./store/basket/handlers";
-
 import './App.css';
+import { getProfileInfo } from "./store/profile/selectors";
+import { profileHandler } from "./store/profile/handlers";
 import Categories from './modules/product/Categories';
-
-import Products from './modules/product/Products';
+import Delivery from './modules/checkout/Delivery';
+import BasketRecap from './modules/checkout/BasketRecap';
 import ProductDetails from './modules/product/productDetails';
-import Basket from './modules/basket/Basket';
-
-
+import Navbar from './modules/basket/Navbar';
+import ProductList from './modules/product/ProductList';
 
 class App extends Component {
 
@@ -21,34 +18,44 @@ class App extends Component {
   }
 
   getProducts = (routerProps) => {
-    return <Products {...routerProps} />
+    return <ProductList {...routerProps} />
   }
 
   getProductDetails = (routerProps) => {
     return <ProductDetails {...routerProps} />
   }
 
+  getCheckout = (routerProps) => {
+    //console.log(this.props.profileInfo.Eea);
+    const isConnected = this.props.profileInfo.Eea;
+    if(isConnected) {
+    return <Delivery {...routerProps} />
+  } else {
+    return <div>Please Signin to checkout or get back to <a href="/">Homepage</a></div>
+  }
+}
+  getBasketRecap = (routerProps) => {
+    const isConnected = this.props.profileInfo.Eea;
+    if(isConnected) {
+    return <BasketRecap {...routerProps} />
+  }
+}
+
   render() {
     return (
 
-      <div className="App" style={{backgroundColor:"papayawhip"}}>
-        <div className="url(../img/ui/shadow.png) center repeat-x" style={{backgroundSize: "auto 100%"}}>
-          <div className="mb-5">Nombre de lignes dans le panier: {this.props.basketList.length}</div>
-          <div
-            className="g-signin2"
-            data-onsuccess="googleConnectCallback"
-            data-theme="dark"
-          />
+      <div className="App" style={{backgroundColor:"none"}}>
+        <Navbar />
 
-        <Basket />
         <Route exact path="/" render={this.getCategories}/>
         <Route path="/categories/:categoryId/products" render={this.getProducts}/>
         <Route path="/products/:productId" render={this.getProductDetails}/>
-      </div>
+        <Route path="/checkout" render={this.getCheckout} />
+        <Route path="/basketrecap" render={this.getBasketRecap} />
       </div>
     );
   }
 }
 
-const Connected = withRouter(connect(getBasketList, basketHandler)(App));
+const Connected = withRouter(connect(getProfileInfo, profileHandler)(App));
 export default Connected;

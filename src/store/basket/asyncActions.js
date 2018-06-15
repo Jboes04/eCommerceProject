@@ -1,6 +1,6 @@
-import {fetching, display, mountError } from "./actions";
+import {fetching, display } from "./actions";
 
-import {getProductDetail} from './../../modules/product/productUtility';
+import {getProductDetail, completeDisplay} from './../../modules/product/productUtility';
 import {containAllInformations} from './../../modules/basket/basketUtility';
 
 export function completeBasketAsync(basketList) {
@@ -12,11 +12,11 @@ export function completeBasketAsync(basketList) {
       if (!containAllInformations([productFromBasket])) {
         return getProductDetail(productFromBasket.productId)
           .then(productDetail => {
-            //console.log("productDetail=", productDetail);
-            return {...productFromBasket, label: productDetail.title, price: productDetail.min_price} ;
+        
+            return {...productFromBasket, label: productDetail.title, price: productDetail.min_price, url: completeDisplay(productDetail)} ;
           });
       } else {
-        return productFromBasket;
+        return {...productFromBasket};
       }
     });
 

@@ -3,12 +3,12 @@ import { connect } from "react-redux";
 import { Link } from 'react-router-dom';
 //import { mapStateToProps } from "../../store/product/selectors";
 import { basketHandler } from "../../store/basket/handlers";
-import completeDisplay from "./productUtility";
+import { completeDisplay } from "./productUtility";
 
 class ProductVignette extends Component {
-  constructor(props) {
-    super(props);
-  }
+  // constructor(props) {
+  //   super(props);
+  // }
 
   handlerAddProductToBasket = (event) => {
     event.preventDefault();
